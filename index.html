@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultation Request | Quick Lift Moving</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0b0b;
+    --panel: rgba(18, 18, 18, 0.92);
+    --text: #f5f5f5;
+    --muted: rgba(255, 255, 255, 0.72);
+    --accent: #c9a227;
+    --accent-dark: #a8861c;
+    --border: rgba(255, 255, 255, 0.12);
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top, rgba(201, 162, 39, 0.18), transparent 35%),
+      linear-gradient(160deg, #050505 0%, #111111 55%, #1a1a1a 100%);
+    padding: 32px 18px;
+    overflow-x: hidden;
+  }
+
+  .consult-shell {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .brand-hero {
+    position: relative;
+    padding: 42px 32px 20px;
+    display: grid;
+    place-items: center;
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 30%),
+      radial-gradient(circle at center, rgba(201, 162, 39, 0.16), transparent 52%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    perspective: 1400px;
+    overflow: hidden;
+  }
+
+  .brand-hero::before,
+  .brand-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(44px);
+    opacity: 0.55;
+  }
+
+  .brand-hero::before {
+    width: 240px;
+    height: 240px;
+    top: -50px;
+    left: -90px;
+    background: rgba(239, 28, 37, 0.16);
+  }
+
+  .brand-hero::after {
+    width: 220px;
+    height: 220px;
+    right: -70px;
+    bottom: 20px;
+    background: rgba(201, 162, 39, 0.18);
+  }
+
+  .logo-stage {
+    position: relative;
+    width: min(100%, 420px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    --shift-x: 0px;
+    --shift-y: 0px;
+  }
+
+  .logo-aura,
+  .logo-orbit,
+  .logo-shadow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .logo-glow {
+    position: absolute;
+    inset: 17%;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, rgba(255, 245, 200, 0.72) 0%, rgba(255, 214, 87, 0.3) 34%, rgba(239, 28, 37, 0.12) 58%, transparent 78%);
+    filter: blur(22px);
+    transform: translateZ(-42px) scale(1.06);
+    opacity: 0.88;
+    pointer-events: none;
+    animation: glowPulse 6.5s ease-in-out infinite;
+  }
+
+  .logo-aura {
+    inset: 14%;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, rgba(255, 255, 255, 0.28), rgba(201, 162, 39, 0.12) 40%, transparent 72%);
+    filter: blur(20px);
+    transform: translateZ(-90px);
+    animation: auraCycle 10s ease-in-out infinite;
+  }
+
+  .logo-orbit {
+    inset: 7%;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 162, 39, 0.26);
+    box-shadow:
+      0 0 0 10px rgba(255, 255, 255, 0.03),
+      0 0 30px rgba(201, 162, 39, 0.12);
+    transform: rotateX(74deg) translateZ(-52px);
+    animation: orbitSpin 20s linear infinite;
+  }
+
+  .logo-orbit-secondary {
+    inset: 14%;
+    border-color: rgba(239, 28, 37, 0.22);
+    box-shadow:
+      0 0 0 8px rgba(255, 255, 255, 0.015),
+      0 0 26px rgba(239, 28, 37, 0.12);
+    transform: rotateY(70deg) rotateZ(24deg) translateZ(-34px);
+    animation: orbitSpinReverse 16s linear infinite;
+  }
+
+  .logo-shadow {
+    inset: auto 16% 3% 16%;
+    height: 12%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.62);
+    filter: blur(18px);
+    transform: translateZ(-120px);
+    animation: shadowPulse 8s ease-in-out infinite;
+  }
+
+  .logo-motion {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+    animation: logoEntrance 1s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+  }
+
+  .logo-card-shell {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+    animation: logoSpinFloat 10.5s ease-in-out infinite 1.1s;
+  }
+
+  .logo-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+    transform:
+      translate3d(var(--shift-x), var(--shift-y), 0)
+      rotateX(var(--tilt-x))
+      rotateY(var(--tilt-y));
+    transition: transform 140ms ease-out, filter 0.25s ease;
+    will-change: transform, filter;
+  }
+
+  .logo-card::before {
+    content: "";
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.95), rgba(245, 241, 233, 0.92) 58%, rgba(217, 208, 194, 0.88) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.32);
+    box-shadow:
+      inset 0 16px 24px rgba(255, 255, 255, 0.38),
+      inset 0 -18px 26px rgba(0, 0, 0, 0.12),
+      0 32px 44px rgba(0, 0, 0, 0.35),
+      0 0 42px rgba(255, 214, 87, 0.12);
+    transform: translateZ(-28px) scale(1.01);
+  }
+
+  .logo-card::after {
+    content: "";
+    position: absolute;
+    inset: 11%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 212, 87, 0.34);
+    box-shadow:
+      0 0 28px rgba(255, 212, 87, 0.18),
+      0 0 52px rgba(255, 212, 87, 0.14);
+    transform: translateZ(8px) scale(1.02);
+    opacity: 0.92;
+  }
+
+  .logo-card:hover {
+    filter: saturate(1.03);
+  }
+
+  .brand-logo {
+    position: relative;
+    z-index: 2;
+    width: min(86%, 360px);
+    max-width: 100%;
+    display: block;
+    transform: translateZ(38px);
+    filter:
+      drop-shadow(0 24px 34px rgba(0, 0, 0, 0.34))
+      drop-shadow(0 0 24px rgba(201, 162, 39, 0.18))
+      drop-shadow(0 0 40px rgba(255, 214, 87, 0.2))
+      drop-shadow(0 0 16px rgba(239, 28, 37, 0.12));
+    animation: logoInnerShift 7s ease-in-out infinite;
+  }
+
+  .logo-caption {
+    margin-top: -6px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .consult-header {
+    padding: 40px 32px 28px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background:
+      linear-gradient(180deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0)),
+      transparent;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(201, 162, 39, 0.35);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .consult-header p {
+    max-width: 560px;
+    margin: 0 auto;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 0.98rem;
+  }
+
+  .consult-body {
+    padding: 32px;
+  }
+
+  .consult-form {
+    display: grid;
+    gap: 18px;
+  }
+
+  .field {
+    display: grid;
+    gap: 8px;
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: rgba(201, 162, 39, 0.8);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  .form-note {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .payment-section {
+    padding: 0 32px 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .payment-card {
+    margin-top: 28px;
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    background:
+      linear-gradient(180deg, rgba(201, 162, 39, 0.1), rgba(255, 255, 255, 0.03)),
+      rgba(255, 255, 255, 0.02);
+  }
+
+  .payment-card h2 {
+    margin-top: 14px;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    letter-spacing: 0.5px;
+  }
+
+  .payment-card p {
+    margin-top: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .payment-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .payment-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.88);
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: not-allowed;
+    opacity: 0.9;
+  }
+
+  .payment-note {
+    font-size: 0.88rem;
+  }
+
+  button {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 18px;
+    background: var(--accent);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 14px 30px rgba(201, 162, 39, 0.24);
+  }
+
+  button:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+
+  .footer-copy {
+    padding: 0 32px 32px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+  }
+
+  @keyframes logoEntrance {
+    0% {
+      opacity: 0;
+      transform: translateY(-24px) rotateX(28deg) scale(0.84);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg) scale(1);
+    }
+  }
+
+  @keyframes logoSpinFloat {
+    0%,
+    100% {
+      transform: translateY(0) translateZ(0) rotateX(5deg) rotateY(-8deg) rotateZ(-1deg);
+    }
+
+    20% {
+      transform: translateY(-4px) translateZ(5px) rotateX(8deg) rotateY(5deg) rotateZ(0.8deg);
+    }
+
+    45% {
+      transform: translateY(-7px) translateZ(9px) rotateX(-4deg) rotateY(9deg) rotateZ(-0.8deg);
+    }
+
+    70% {
+      transform: translateY(-3px) translateZ(5px) rotateX(7deg) rotateY(-8deg) rotateZ(1deg);
+    }
+
+    85% {
+      transform: translateY(-1px) translateZ(2px) rotateX(-2deg) rotateY(4deg) rotateZ(-0.7deg);
+    }
+  }
+
+  @keyframes auraCycle {
+    0%,
+    100% {
+      opacity: 0.68;
+      transform: translateZ(-90px) rotate(0deg) scale(1);
+    }
+
+    50% {
+      opacity: 0.95;
+      transform: translateZ(-90px) rotate(180deg) scale(1.04);
+    }
+  }
+
+  @keyframes orbitSpin {
+    from {
+      transform: rotateX(74deg) rotateZ(0deg) translateZ(-52px);
+    }
+
+    to {
+      transform: rotateX(74deg) rotateZ(360deg) translateZ(-52px);
+    }
+  }
+
+  @keyframes orbitSpinReverse {
+    from {
+      transform: rotateY(70deg) rotateZ(24deg) rotateX(0deg) translateZ(-34px);
+    }
+
+    to {
+      transform: rotateY(70deg) rotateZ(24deg) rotateX(360deg) translateZ(-34px);
+    }
+  }
+
+  @keyframes shadowPulse {
+    0%,
+    100% {
+      opacity: 0.52;
+      transform: translateZ(-120px) scale(0.97);
+    }
+
+    50% {
+      opacity: 0.66;
+      transform: translateZ(-120px) scale(1);
+    }
+  }
+
+  @keyframes logoInnerShift {
+    0%,
+    100% {
+      transform: translateZ(38px) rotateZ(0deg) scale(1);
+    }
+
+    35% {
+      transform: translateZ(40px) rotateZ(0.4deg) scale(1.01);
+    }
+
+    65% {
+      transform: translateZ(39px) rotateZ(-0.4deg) scale(0.998);
+    }
+  }
+
+  @keyframes glowPulse {
+    0%,
+    100% {
+      opacity: 0.82;
+      transform: translateZ(-42px) scale(1.04);
+    }
+
+    50% {
+      opacity: 1;
+      transform: translateZ(-42px) scale(1.09);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-glow,
+    .logo-aura,
+    .logo-orbit,
+    .logo-orbit-secondary,
+    .logo-shadow,
+    .logo-motion,
+    .logo-card-shell,
+    .brand-logo {
+      animation: none;
+    }
+
+    .logo-card {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .brand-hero,
+    .consult-header,
+    .consult-body,
+    .payment-section,
+    .footer-copy {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .consult-header {
+      padding-top: 36px;
+    }
+
+    .logo-stage {
+      width: min(100%, 320px);
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="consult-shell">
+    <section class="brand-hero">
+      <div class="logo-stage">
+        <div class="logo-glow"></div>
+        <div class="logo-aura"></div>
+        <div class="logo-orbit"></div>
+        <div class="logo-orbit logo-orbit-secondary"></div>
+        <div class="logo-shadow"></div>
+        <div class="logo-motion">
+          <div class="logo-card-shell">
+            <div class="logo-card">
+              <img class="brand-logo" src="QLM%20logo.PNG" alt="Quick Lift Moving logo">
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="logo-caption">Quick Lift Moving</p>
+    </section>
+
+    <section class="consult-header">
+      <span class="eyebrow">Consultation Request</span>
+      <h1>Schedule a Consultation</h1>
+      <p>Interested in working with Quick Lift Moving? Complete the form below and share a few details about your consultation needs.</p>
+    </section>
+
+    <section class="consult-body">
+      <form class="consult-form" action="send.php" method="POST">
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input id="name" type="text" name="name" placeholder="Full Name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" name="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="field">
+          <label for="organization">Organization</label>
+          <input id="organization" type="text" name="organization" placeholder="Organization (Optional)">
+        </div>
+
+        <div class="field">
+          <label for="message">Consultation Needs</label>
+          <textarea id="message" name="message" placeholder="Briefly describe your consultation needs" required></textarea>
+        </div>
+
+        <p class="form-note">This form includes the same consultation request details from the version you shared: name, email, organization, and a message about consultation needs.</p>
+
+        <button type="submit">Submit Request</button>
+      </form>
+    </section>
+
+    <section class="payment-section" id="payment">
+      <div class="payment-card">
+        <span class="eyebrow">Squarespace Payment</span>
+        <h2>Need to Make a Payment?</h2>
+        <p>If you're ready to pay Quick Lift Moving, this section can send customers directly to a Squarespace checkout for deposits, balances, or approved service payments.</p>
+        <div class="payment-actions">
+          <button class="payment-button" type="button" disabled>Squarespace Checkout Link Coming Soon</button>
+        </div>
+        <p class="payment-note">Once you send over the live Squarespace payment link, I can turn this into an active payment button right here underneath the consultation form.</p>
+      </div>
+    </section>
+
+    <p class="footer-copy">Quick Lift Moving Consultation Request</p>
+  </main>
+  <script>
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const logoStage = document.querySelector(".logo-stage");
+
+    if (logoStage && !prefersReducedMotion.matches) {
+      const setLogoTilt = (event) => {
+        const rect = logoStage.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 12;
+        const rotateX = (0.5 - y) * 10;
+        const shiftX = (x - 0.5) * 8;
+        const shiftY = (y - 0.5) * 6;
+
+        logoStage.style.setProperty("--tilt-x", rotateX.toFixed(2) + "deg");
+        logoStage.style.setProperty("--tilt-y", rotateY.toFixed(2) + "deg");
+        logoStage.style.setProperty("--shift-x", shiftX.toFixed(2) + "px");
+        logoStage.style.setProperty("--shift-y", shiftY.toFixed(2) + "px");
+      };
+
+      const resetLogoTilt = () => {
+        logoStage.style.setProperty("--tilt-x", "0deg");
+        logoStage.style.setProperty("--tilt-y", "0deg");
+        logoStage.style.setProperty("--shift-x", "0px");
+        logoStage.style.setProperty("--shift-y", "0px");
+      };
+
+      logoStage.addEventListener("pointermove", setLogoTilt);
+      logoStage.addEventListener("pointerleave", resetLogoTilt);
+      logoStage.addEventListener("pointercancel", resetLogoTilt);
+    }
+  </script>
+</body>
+</html>
