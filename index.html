@@ -3,20 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consultation Request | Quick Lift Moving</title>
+<title>Free Estimate Request | Quick Lift Moving</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0b0b0b;
-    --panel: rgba(18, 18, 18, 0.92);
-    --text: #f5f5f5;
-    --muted: rgba(255, 255, 255, 0.72);
-    --accent: #c9a227;
-    --accent-dark: #a8861c;
-    --border: rgba(255, 255, 255, 0.12);
-    --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    --bg: #050505;
+    --panel: rgba(14, 16, 20, 0.9);
+    --panel-strong: rgba(18, 20, 24, 0.96);
+    --panel-soft: rgba(255, 255, 255, 0.04);
+    --text: #f7f4ee;
+    --muted: rgba(247, 244, 238, 0.72);
+    --accent: #d5ae34;
+    --accent-dark: #b78e18;
+    --accent-red: #ef1c25;
+    --border: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --field: rgba(255, 255, 255, 0.05);
+    --shadow: 0 36px 90px rgba(0, 0, 0, 0.48);
   }
 
   * {
@@ -26,36 +31,92 @@
   }
 
   body {
+    position: relative;
+    isolation: isolate;
     min-height: 100vh;
     font-family: "Montserrat", sans-serif;
     color: var(--text);
     background:
-      radial-gradient(circle at top, rgba(201, 162, 39, 0.18), transparent 35%),
-      linear-gradient(160deg, #050505 0%, #111111 55%, #1a1a1a 100%);
-    padding: 32px 18px;
+      radial-gradient(circle at top left, rgba(239, 28, 37, 0.12), transparent 26%),
+      radial-gradient(circle at top right, rgba(213, 174, 52, 0.14), transparent 24%),
+      radial-gradient(circle at bottom center, rgba(255, 255, 255, 0.04), transparent 28%),
+      linear-gradient(165deg, #030303 0%, #0c0d10 48%, #14151a 100%);
+    padding: 38px 18px 52px;
     overflow-x: hidden;
   }
 
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    background:
+      repeating-linear-gradient(115deg, transparent 0 44px, rgba(255, 255, 255, 0.018) 44px 45px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 18%);
+    opacity: 0.5;
+    z-index: -2;
+  }
+
+  body::after {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 32%),
+      radial-gradient(circle at 50% 24%, rgba(213, 174, 52, 0.08), transparent 30%);
+    filter: blur(10px);
+    z-index: -1;
+  }
+
   .consult-shell {
+    position: relative;
     width: min(100%, 760px);
     margin: 0 auto;
-    background: var(--panel);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 12%),
+      linear-gradient(180deg, var(--panel-strong), var(--panel));
     border: 1px solid var(--border);
-    border-radius: 24px;
+    border-radius: 30px;
     box-shadow: var(--shadow);
     overflow: hidden;
+    backdrop-filter: blur(18px);
+  }
+
+  .consult-shell::before,
+  .consult-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .consult-shell::before {
+    inset: 1px;
+    border-radius: 29px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 22%),
+      linear-gradient(135deg, rgba(239, 28, 37, 0.05), transparent 22%, transparent 78%, rgba(213, 174, 52, 0.05));
+    opacity: 0.95;
+  }
+
+  .consult-shell::after {
+    inset: auto 24px 0 24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+    opacity: 0.55;
   }
 
   .brand-hero {
     position: relative;
-    padding: 42px 32px 20px;
+    padding: 52px 38px 24px;
     display: grid;
     place-items: center;
     border-bottom: 1px solid var(--border);
     background:
-      radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 30%),
-      radial-gradient(circle at center, rgba(201, 162, 39, 0.16), transparent 52%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 28%),
+      radial-gradient(circle at center, rgba(213, 174, 52, 0.18), transparent 56%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
     perspective: 1400px;
     overflow: hidden;
   }
@@ -245,57 +306,74 @@
   }
 
   .logo-caption {
-    margin-top: -6px;
-    color: rgba(255, 255, 255, 0.62);
-    font-size: 0.9rem;
+    margin-top: -2px;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 0.82rem;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
   }
 
   .consult-header {
-    padding: 40px 32px 28px;
+    padding: 42px 38px 30px;
     text-align: center;
     border-bottom: 1px solid var(--border);
     background:
-      linear-gradient(180deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0)),
-      transparent;
+      linear-gradient(180deg, rgba(213, 174, 52, 0.12), rgba(213, 174, 52, 0) 78%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0));
   }
 
   .eyebrow {
     display: inline-block;
-    margin-bottom: 16px;
-    padding: 8px 12px;
+    margin-bottom: 18px;
+    padding: 9px 14px;
     border-radius: 999px;
-    border: 1px solid rgba(201, 162, 39, 0.35);
+    border: 1px solid rgba(213, 174, 52, 0.38);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 0 24px rgba(213, 174, 52, 0.08);
     color: var(--accent);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 2.4px;
     text-transform: uppercase;
   }
 
   h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    letter-spacing: 1px;
-    margin-bottom: 16px;
+    font-size: clamp(2.2rem, 5vw, 3.35rem);
+    letter-spacing: 0.4px;
+    margin-bottom: 18px;
+    line-height: 1.05;
+    background: linear-gradient(180deg, #ffffff 0%, #f6e6af 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
   }
 
   .consult-header p {
-    max-width: 560px;
+    max-width: 580px;
     margin: 0 auto;
     color: var(--muted);
-    line-height: 1.8;
-    font-size: 0.98rem;
+    line-height: 1.85;
+    font-size: 1rem;
   }
 
   .consult-body {
-    padding: 32px;
+    position: relative;
+    padding: 36px 38px 38px;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(239, 28, 37, 0.05), transparent 28%),
+      radial-gradient(circle at 100% 100%, rgba(213, 174, 52, 0.07), transparent 32%);
   }
 
   .consult-form {
+    position: relative;
+    z-index: 1;
     display: grid;
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 18px;
   }
 
   .field {
@@ -303,19 +381,157 @@
     gap: 8px;
   }
 
-  label {
+  .field-half {
+    grid-column: span 1;
+  }
+
+  .field-full {
+    grid-column: 1 / -1;
+  }
+
+  .upload-zone {
+    position: relative;
+    padding: 24px 22px;
+    border: 1.5px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.016)),
+      rgba(255, 255, 255, 0.025);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 24px 34px rgba(0, 0, 0, 0.16);
+    text-align: center;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .upload-zone:hover,
+  .upload-zone.is-dragover {
+    border-color: rgba(201, 162, 39, 0.72);
+    background:
+      linear-gradient(180deg, rgba(213, 174, 52, 0.1), rgba(255, 255, 255, 0.03)),
+      rgba(255, 255, 255, 0.03);
+    box-shadow:
+      0 0 0 3px rgba(213, 174, 52, 0.12),
+      0 20px 36px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .upload-zone:focus-visible {
+    outline: none;
+    border-color: rgba(201, 162, 39, 0.8);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.16);
+  }
+
+  .upload-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(213, 174, 52, 0.34);
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 70%),
+      rgba(213, 174, 52, 0.1);
+    box-shadow: 0 0 26px rgba(213, 174, 52, 0.12);
+    color: var(--accent);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .upload-title {
+    font-size: 1.04rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.94);
+  }
+
+  .upload-copy {
+    margin-top: 8px;
+    color: var(--muted);
+    line-height: 1.7;
     font-size: 0.9rem;
+  }
+
+  .upload-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(201, 162, 39, 0.36);
+    background: rgba(213, 174, 52, 0.12);
+    color: var(--accent);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .upload-link:hover {
+    background: rgba(201, 162, 39, 0.18);
+    color: #f4d15a;
+  }
+
+  .file-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+  }
+
+  .upload-status {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.86rem;
+  }
+
+  .upload-list {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .upload-list:empty {
+    display: none;
+  }
+
+  .upload-item {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.025)),
+      rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.88rem;
+    text-align: left;
+    word-break: break-word;
+  }
+
+  label {
+    font-size: 0.78rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.82);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
   }
 
   input,
   textarea {
     width: 100%;
-    padding: 14px 16px;
-    border-radius: 12px;
+    padding: 15px 16px;
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.05);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+      var(--field);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 14px 24px rgba(0, 0, 0, 0.12);
     color: var(--text);
     font: inherit;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
@@ -330,38 +546,64 @@
   textarea:focus {
     outline: none;
     border-color: rgba(201, 162, 39, 0.8);
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
-    background: rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 0 0 3px rgba(201, 162, 39, 0.16),
+      0 16px 28px rgba(0, 0, 0, 0.18);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04)),
+      rgba(255, 255, 255, 0.07);
   }
 
   textarea {
-    min-height: 160px;
+    min-height: 180px;
     resize: vertical;
   }
 
   .form-note {
+    grid-column: 1 / -1;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018)),
+      rgba(255, 255, 255, 0.02);
     color: var(--muted);
-    font-size: 0.88rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    line-height: 1.8;
   }
 
   .payment-section {
-    padding: 0 32px 32px;
+    padding: 0 38px 40px;
     border-top: 1px solid var(--border);
   }
 
   .payment-card {
+    position: relative;
+    overflow: hidden;
     margin-top: 28px;
-    padding: 24px;
-    border-radius: 20px;
-    border: 1px solid rgba(201, 162, 39, 0.2);
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid rgba(213, 174, 52, 0.18);
     background:
-      linear-gradient(180deg, rgba(201, 162, 39, 0.1), rgba(255, 255, 255, 0.03)),
-      rgba(255, 255, 255, 0.02);
+      linear-gradient(180deg, rgba(213, 174, 52, 0.12), rgba(255, 255, 255, 0.03)),
+      linear-gradient(135deg, rgba(239, 28, 37, 0.04), transparent 38%),
+      rgba(255, 255, 255, 0.025);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 24px 40px rgba(0, 0, 0, 0.18);
+  }
+
+  .payment-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 64px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+    pointer-events: none;
   }
 
   .payment-card h2 {
-    margin-top: 14px;
+    margin-top: 16px;
     font-size: clamp(1.6rem, 4vw, 2.2rem);
     letter-spacing: 0.5px;
   }
@@ -376,7 +618,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
-    margin-top: 22px;
+    margin-top: 26px;
   }
 
   .payment-button {
@@ -385,9 +627,12 @@
     justify-content: center;
     min-height: 52px;
     padding: 0 22px;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.06);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+      rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     color: rgba(255, 255, 255, 0.88);
     font: inherit;
     font-weight: 700;
@@ -397,35 +642,60 @@
   }
 
   .payment-note {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
   }
 
-  button {
+  .submit-button {
+    position: relative;
+    grid-column: 1 / -1;
+    overflow: hidden;
     border: none;
-    border-radius: 12px;
-    padding: 16px 18px;
-    background: var(--accent);
-    color: #ffffff;
+    border-radius: 16px;
+    padding: 18px 18px;
+    background: linear-gradient(135deg, #f3ce57 0%, #d5ae34 45%, #b58913 100%);
+    color: #15110a;
     font: inherit;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    font-weight: 800;
+    letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 14px 30px rgba(201, 162, 39, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    box-shadow:
+      0 22px 34px rgba(213, 174, 52, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.42);
   }
 
-  button:hover {
-    background: var(--accent-dark);
-    transform: translateY(-1px);
+  .submit-button::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -22%;
+    width: 28%;
+    height: 180%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: rotate(18deg) translateX(-180%);
+    transition: transform 0.7s ease;
+  }
+
+  .submit-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.02);
+    box-shadow:
+      0 26px 42px rgba(213, 174, 52, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+
+  .submit-button:hover::after {
+    transform: rotate(18deg) translateX(460%);
   }
 
   .footer-copy {
-    padding: 0 32px 32px;
+    padding: 0 38px 38px;
     text-align: center;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.82rem;
-    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
   }
 
   @keyframes logoEntrance {
@@ -554,6 +824,19 @@
     }
   }
 
+  @media (max-width: 720px) {
+    .consult-form {
+      grid-template-columns: 1fr;
+    }
+
+    .field-half,
+    .field-full,
+    .form-note,
+    .submit-button {
+      grid-column: auto;
+    }
+  }
+
   @media (max-width: 640px) {
     .brand-hero,
     .consult-header,
@@ -570,6 +853,10 @@
 
     .logo-stage {
       width: min(100%, 320px);
+    }
+
+    .payment-card {
+      padding: 24px 20px;
     }
   }
 </style>
@@ -595,36 +882,54 @@
     </section>
 
     <section class="consult-header">
-      <span class="eyebrow">Consultation Request</span>
-      <h1>Schedule a Consultation</h1>
-      <p>Interested in working with Quick Lift Moving? Complete the form below and share a few details about your consultation needs.</p>
+      <span class="eyebrow">Free Estimate</span>
+      <h1>Request a Free Estimate</h1>
+      <p>Tell Quick Lift Moving a little about your move and we'll follow up with a free quote and next steps.</p>
     </section>
 
     <section class="consult-body">
-      <form class="consult-form" action="send.php" method="POST">
-        <div class="field">
+      <form class="consult-form" action="send.php" method="POST" enctype="multipart/form-data">
+        <div class="field field-half">
           <label for="name">Full Name</label>
           <input id="name" type="text" name="name" placeholder="Full Name" required>
         </div>
 
-        <div class="field">
+        <div class="field field-half">
           <label for="email">Email Address</label>
           <input id="email" type="email" name="email" placeholder="Email Address" required>
         </div>
 
-        <div class="field">
+        <div class="field field-half">
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" inputmode="tel" required>
+        </div>
+
+        <div class="field field-half">
           <label for="organization">Organization</label>
           <input id="organization" type="text" name="organization" placeholder="Organization (Optional)">
         </div>
 
-        <div class="field">
-          <label for="message">Consultation Needs</label>
-          <textarea id="message" name="message" placeholder="Briefly describe your consultation needs" required></textarea>
+        <div class="field field-full">
+          <label for="message">Move Details</label>
+          <textarea id="message" name="message" placeholder="Briefly describe what you need moved, your locations, and anything else we should know" required></textarea>
         </div>
 
-        <p class="form-note">This form includes the same consultation request details from the version you shared: name, email, organization, and a message about consultation needs.</p>
+        <div class="field field-full">
+          <label for="photos">Photos of Items to Move (Optional)</label>
+          <div class="upload-zone" id="photo-upload" tabindex="0" role="button" aria-describedby="upload-status">
+            <input class="file-input" id="photos" type="file" name="photos[]" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
+            <div class="upload-icon">+</div>
+            <div class="upload-title">Drag photos here or browse</div>
+            <p class="upload-copy">Upload a few pictures of the items you're moving to help with the estimate. Up to 4 images.</p>
+            <button class="upload-link" id="browse-photos" type="button">Choose Photos</button>
+            <p class="upload-status" id="upload-status">Accepted formats: JPG, PNG, WEBP, GIF, HEIC, HEIF</p>
+            <div class="upload-list" id="upload-list"></div>
+          </div>
+        </div>
 
-        <button type="submit">Submit Request</button>
+        <p class="form-note">Share your name, email, phone number, move details, and optional photos so Quick Lift Moving can review everything and reach out with a free quote.</p>
+
+        <button class="submit-button" type="submit">Submit Request</button>
       </form>
     </section>
 
@@ -636,15 +941,20 @@
         <div class="payment-actions">
           <button class="payment-button" type="button" disabled>Squarespace Checkout Link Coming Soon</button>
         </div>
-        <p class="payment-note">Once you send over the live Squarespace payment link, I can turn this into an active payment button right here underneath the consultation form.</p>
+        <p class="payment-note">Once you send over the live Squarespace payment link, I can turn this into an active payment button right here underneath the free estimate form.</p>
       </div>
     </section>
 
-    <p class="footer-copy">Quick Lift Moving Consultation Request</p>
+    <p class="footer-copy">Quick Lift Moving Free Estimate Request</p>
   </main>
   <script>
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const logoStage = document.querySelector(".logo-stage");
+    const photoInput = document.getElementById("photos");
+    const photoUpload = document.getElementById("photo-upload");
+    const photoBrowseButton = document.getElementById("browse-photos");
+    const uploadList = document.getElementById("upload-list");
+    const uploadStatus = document.getElementById("upload-status");
 
     if (logoStage && !prefersReducedMotion.matches) {
       const setLogoTilt = (event) => {
@@ -672,6 +982,76 @@
       logoStage.addEventListener("pointermove", setLogoTilt);
       logoStage.addEventListener("pointerleave", resetLogoTilt);
       logoStage.addEventListener("pointercancel", resetLogoTilt);
+    }
+
+    if (photoInput && photoUpload && uploadList && uploadStatus) {
+      const updatePhotoList = () => {
+        uploadList.innerHTML = "";
+
+        if (!photoInput.files || photoInput.files.length === 0) {
+          uploadStatus.textContent = "Accepted formats: JPG, PNG, WEBP, GIF, HEIC, HEIF";
+          return;
+        }
+
+        const label = photoInput.files.length === 1 ? "photo selected" : "photos selected";
+        uploadStatus.textContent = photoInput.files.length + " " + label;
+
+        Array.from(photoInput.files).forEach((file) => {
+          const item = document.createElement("div");
+          item.className = "upload-item";
+          item.textContent = file.name;
+          uploadList.appendChild(item);
+        });
+      };
+
+      const openFilePicker = () => {
+        photoInput.click();
+      };
+
+      photoBrowseButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        openFilePicker();
+      });
+
+      photoUpload.addEventListener("click", (event) => {
+        if (event.target === photoBrowseButton) {
+          return;
+        }
+
+        openFilePicker();
+      });
+
+      photoUpload.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openFilePicker();
+        }
+      });
+
+      photoInput.addEventListener("change", updatePhotoList);
+
+      ["dragenter", "dragover"].forEach((eventName) => {
+        photoUpload.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          photoUpload.classList.add("is-dragover");
+        });
+      });
+
+      ["dragleave", "dragend", "drop"].forEach((eventName) => {
+        photoUpload.addEventListener(eventName, (event) => {
+          event.preventDefault();
+          photoUpload.classList.remove("is-dragover");
+        });
+      });
+
+      photoUpload.addEventListener("drop", (event) => {
+        if (!event.dataTransfer || !event.dataTransfer.files) {
+          return;
+        }
+
+        photoInput.files = event.dataTransfer.files;
+        updatePhotoList();
+      });
     }
   </script>
 </body>
