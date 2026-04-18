@@ -161,9 +161,9 @@ if (isset($_FILES["photos"]) && is_array($_FILES["photos"]["name"])) {
     }
 }
 
-// Replace this placeholder when you are ready to send submissions to a live inbox.
-$to = "your-email@example.com";
-$subject = "New Free Estimate Request - Quick Lift Moving";
+// Free estimate requests are delivered to the current inbox.
+$to = "quickliftmovers917@gmail.com";
+$subject = "New Free Estimate Request - QuickLift Moving";
 
 $body = "You have received a new free estimate request.\n\n";
 $body .= "Full Name: {$safe_name}\n";
@@ -172,12 +172,6 @@ $body .= "Phone Number: {$safe_phone}\n";
 $body .= "Organization: " . ($safe_organization !== "" ? $safe_organization : "N/A") . "\n";
 $body .= "Photos Included: " . (!empty($photo_names) ? implode(", ", $photo_names) : "None") . "\n\n";
 $body .= "Move Details:\n{$safe_message}\n";
-
-$email_configured = $to !== "your-email@example.com";
-
-if (!$email_configured) {
-    redirect_with_alert("Your free estimate form is set up. Add your real inbox in send.php when you are ready to enable email delivery.");
-}
 
 $headers = "From: noreply@quickliftmoving.com\r\n";
 $headers .= "Reply-To: {$safe_email}\r\n";
