@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Estimate Request | Quick Lift Moving</title>
+<title>Free Estimate Request | QuickLift Moving</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -314,6 +314,831 @@
     text-transform: uppercase;
   }
 
+  .work-showcase {
+    padding: 24px 38px 36px;
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(circle at 15% 0%, rgba(239, 28, 37, 0.06), transparent 24%),
+      radial-gradient(circle at 90% 100%, rgba(213, 174, 52, 0.08), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0));
+  }
+
+  .showcase-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #080808;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 26px 42px rgba(0, 0, 0, 0.28);
+  }
+
+  .showcase-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 28%, transparent 72%, rgba(255, 255, 255, 0.05)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 22%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .showcase-slides {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    min-height: 340px;
+  }
+
+  .showcase-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .showcase-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.04);
+    transition: transform 4.6s ease;
+    filter: saturate(1.02) contrast(1.02);
+  }
+
+  .showcase-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 1;
+  }
+
+  .showcase-slide.is-active img {
+    transform: scale(1);
+  }
+
+  .showcase-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 24px 22px;
+    background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 8, 0.16) 24%, rgba(8, 8, 8, 0.88) 100%);
+    z-index: 3;
+  }
+
+  .showcase-kicker {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #f2cb52;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .showcase-copy p {
+    max-width: 360px;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
+    font-size: 0.92rem;
+  }
+
+  .showcase-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .showcase-button {
+    min-width: 88px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+      rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.92);
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .showcase-button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(213, 174, 52, 0.44);
+    background:
+      linear-gradient(180deg, rgba(213, 174, 52, 0.16), rgba(255, 255, 255, 0.04)),
+      rgba(255, 255, 255, 0.03);
+  }
+
+  .showcase-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px 18px;
+    background: rgba(6, 6, 6, 0.86);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 3;
+  }
+
+  .showcase-progress-bar {
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .showcase-progress-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #ef1c25 0%, #f0c74f 100%);
+    box-shadow: 0 0 20px rgba(213, 174, 52, 0.26);
+    transition: width 0.5s ease;
+  }
+
+  .showcase-count {
+    min-width: 72px;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+  }
+
+  .reviews-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 38px 38px 42px;
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(circle at 0% 8%, rgba(239, 28, 37, 0.08), transparent 24%),
+      radial-gradient(circle at 100% 0%, rgba(213, 174, 52, 0.1), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.008));
+  }
+
+  .reviews-section::before,
+  .reviews-section::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(48px);
+    opacity: 0.58;
+    pointer-events: none;
+    z-index: 0;
+    animation: reviewsGlowDrift 13s ease-in-out infinite;
+  }
+
+  .reviews-section::before {
+    top: 28px;
+    right: -78px;
+    width: 220px;
+    height: 220px;
+    background: rgba(213, 174, 52, 0.16);
+  }
+
+  .reviews-section::after {
+    left: -54px;
+    bottom: 44px;
+    width: 190px;
+    height: 190px;
+    background: rgba(239, 28, 37, 0.14);
+    animation-delay: -6s;
+  }
+
+  .reviews-head,
+  .reviews-deck-shell {
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviews-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(250px, 0.85fr);
+    gap: 22px;
+    align-items: end;
+  }
+
+  .reviews-copy h2 {
+    margin-top: 2px;
+    font-size: clamp(1.7rem, 4vw, 2.55rem);
+    line-height: 1.1;
+    letter-spacing: 0.2px;
+  }
+
+  .reviews-copy p {
+    margin-top: 16px;
+    max-width: 520px;
+    color: var(--muted);
+    line-height: 1.85;
+    font-size: 0.97rem;
+  }
+
+  .review-pillars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .review-pillars span {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025)),
+      rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.79rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .reviews-scorecard {
+    position: relative;
+    overflow: hidden;
+    padding: 24px 24px 22px;
+    border-radius: 24px;
+    border: 1px solid rgba(213, 174, 52, 0.2);
+    background:
+      linear-gradient(180deg, rgba(213, 174, 52, 0.14), rgba(255, 255, 255, 0.04)),
+      linear-gradient(135deg, rgba(239, 28, 37, 0.045), transparent 38%),
+      rgba(255, 255, 255, 0.026);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 24px 42px rgba(0, 0, 0, 0.2);
+    animation: reviewsScoreFloat 7.2s ease-in-out infinite;
+  }
+
+  .reviews-scorecard::before {
+    content: "";
+    position: absolute;
+    top: -42px;
+    left: -28px;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.24), transparent 68%);
+    opacity: 0.46;
+    pointer-events: none;
+  }
+
+  .score-label {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .score-number {
+    margin-top: 14px;
+    font-size: clamp(3rem, 8vw, 4.6rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5d66d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+  }
+
+  .score-stars {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.08rem;
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, #fff7cf 0%, #ffd758 22%, #ffffff 46%, #ffd04a 70%, #fff6c0 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 16px rgba(255, 214, 87, 0.26));
+    animation: starShine 4.2s linear infinite;
+  }
+
+  .score-copy {
+    margin-top: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 0.92rem;
+  }
+
+  .reviews-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    margin-top: 18px;
+    padding: 0 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(213, 174, 52, 0.34);
+    background:
+      linear-gradient(180deg, rgba(213, 174, 52, 0.14), rgba(255, 255, 255, 0.04)),
+      rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    color: #f7d96f;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .reviews-link:hover {
+    transform: translateY(-1px);
+    border-color: rgba(213, 174, 52, 0.54);
+    background:
+      linear-gradient(180deg, rgba(213, 174, 52, 0.18), rgba(255, 255, 255, 0.05)),
+      rgba(255, 255, 255, 0.03);
+  }
+
+  .reviews-deck-shell {
+    margin-top: 30px;
+    padding: 24px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018)),
+      radial-gradient(circle at top right, rgba(213, 174, 52, 0.08), transparent 26%),
+      rgba(255, 255, 255, 0.02);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 26px 42px rgba(0, 0, 0, 0.16);
+  }
+
+  .reviews-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .reviews-swipe-label {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.83rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .reviews-deck-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .reviews-button {
+    min-width: 84px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+      rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.92);
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .reviews-button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(213, 174, 52, 0.42);
+    background:
+      linear-gradient(180deg, rgba(213, 174, 52, 0.16), rgba(255, 255, 255, 0.04)),
+      rgba(255, 255, 255, 0.03);
+  }
+
+  .reviews-count {
+    min-width: 88px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+  }
+
+  .reviews-deck-progress {
+    position: relative;
+    height: 8px;
+    margin-bottom: 20px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .reviews-deck-progress-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #ef1c25 0%, #f3cf58 100%);
+    box-shadow: 0 0 20px rgba(213, 174, 52, 0.24);
+    transition: width 0.45s ease;
+  }
+
+  .reviews-grid {
+    position: relative;
+    display: grid;
+    gap: 18px;
+  }
+
+  .reviews-grid.is-ready {
+    display: block;
+    touch-action: pan-y;
+    user-select: none;
+    cursor: grab;
+    min-height: 260px;
+  }
+
+  .reviews-grid.is-ready:active {
+    cursor: grabbing;
+  }
+
+  .review-card {
+    position: relative;
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    padding: 20px 18px 18px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02)),
+      linear-gradient(135deg, rgba(239, 28, 37, 0.028), transparent 32%, transparent 68%, rgba(213, 174, 52, 0.04)),
+      rgba(18, 20, 24, 0.94);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 22px 34px rgba(0, 0, 0, 0.16);
+    transition:
+      opacity 0.72s ease,
+      transform 0.72s cubic-bezier(0.18, 0.82, 0.22, 1),
+      filter 0.55s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .reviews-grid.is-ready .review-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    will-change: transform, opacity, filter;
+    transform-origin: center top;
+  }
+
+  .reviews-grid.is-ready .review-card .review-top,
+  .reviews-grid.is-ready .review-card .review-stars,
+  .reviews-grid.is-ready .review-card .review-text {
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+
+  .review-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(239, 28, 37, 0.96), rgba(213, 174, 52, 0.96));
+  }
+
+  .review-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(128deg, transparent 24%, rgba(255, 255, 255, 0.08) 45%, transparent 58%);
+    opacity: 0.26;
+    pointer-events: none;
+    transform: translateX(-62%);
+    transition: transform 0.7s ease, opacity 0.3s ease;
+  }
+
+  .reviews-grid.is-ready .review-card[data-card-state="active"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    z-index: 4;
+    pointer-events: auto;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
+      linear-gradient(135deg, rgba(239, 28, 37, 0.04), transparent 34%, transparent 68%, rgba(213, 174, 52, 0.06)),
+      rgba(16, 18, 22, 0.985);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 26px 40px rgba(0, 0, 0, 0.24),
+      0 16px 0 -6px rgba(22, 24, 29, 0.96),
+      0 32px 0 -12px rgba(18, 20, 25, 0.94),
+      0 48px 0 -18px rgba(14, 16, 21, 0.9);
+  }
+
+  .reviews-grid.is-ready .review-card[data-card-state="next"] {
+    opacity: 0.98;
+    transform: translate3d(0, 26px, 0) scale(0.968);
+    z-index: 3;
+    filter: saturate(0.9);
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.012)),
+      rgba(18, 20, 24, 0.98);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.03),
+      0 18px 30px rgba(0, 0, 0, 0.16);
+  }
+
+  .reviews-grid.is-ready .review-card[data-card-state="next2"] {
+    opacity: 0.94;
+    transform: translate3d(0, 50px, 0) scale(0.936);
+    z-index: 2;
+    filter: saturate(0.8);
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01)),
+      rgba(16, 18, 22, 0.98);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.025),
+      0 14px 22px rgba(0, 0, 0, 0.14);
+  }
+
+  .reviews-grid.is-ready .review-card[data-card-state="hidden-right"] {
+    opacity: 0;
+    transform: translate3d(18%, 58px, 0) scale(0.92) rotateZ(2deg);
+    z-index: 1;
+    filter: blur(0.8px);
+    pointer-events: none;
+  }
+
+  .reviews-grid.is-ready .review-card[data-card-state="hidden-left"] {
+    opacity: 0;
+    transform: translate3d(-18%, 58px, 0) scale(0.92) rotateZ(-2deg);
+    z-index: 1;
+    filter: blur(0.8px);
+    pointer-events: none;
+  }
+
+  .reviews-grid.is-ready .review-card:not([data-card-state="active"]) .review-top,
+  .reviews-grid.is-ready .review-card:not([data-card-state="active"]) .review-stars,
+  .reviews-grid.is-ready .review-card:not([data-card-state="active"]) .review-text {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .reviews-grid.is-ready .review-card:not([data-card-state="active"])::after {
+    opacity: 0.08;
+  }
+
+  .reviews-grid:not(.is-ready) .review-card:hover,
+  .reviews-grid.is-ready .review-card[data-card-state="active"]:hover {
+    transform: translateY(-4px);
+    border-color: rgba(213, 174, 52, 0.24);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 28px 40px rgba(0, 0, 0, 0.22),
+      0 0 38px rgba(213, 174, 52, 0.08);
+  }
+
+  .reviews-grid:not(.is-ready) .review-card:hover::after,
+  .reviews-grid.is-ready .review-card[data-card-state="active"]:hover::after {
+    transform: translateX(36%);
+    opacity: 0.42;
+  }
+
+  .review-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .review-person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .review-avatar {
+    display: grid;
+    place-items: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ef1c25, #9c0d14);
+    box-shadow: 0 12px 22px rgba(239, 28, 37, 0.2);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .review-card:nth-child(4n + 2) .review-avatar {
+    background: linear-gradient(135deg, #f2c94b, #ef1c25);
+    box-shadow: 0 12px 22px rgba(213, 174, 52, 0.18);
+  }
+
+  .review-card:nth-child(4n + 3) .review-avatar {
+    background: linear-gradient(135deg, #2ad26f, #16794d);
+    box-shadow: 0 12px 22px rgba(42, 210, 111, 0.16);
+  }
+
+  .review-card:nth-child(4n + 4) .review-avatar {
+    background: linear-gradient(135deg, #d88c1c, #ef1c25);
+    box-shadow: 0 12px 22px rgba(216, 140, 28, 0.16);
+  }
+
+  .review-person-copy h3 {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .review-person-copy p {
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .review-source {
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+  }
+
+  .review-stars {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.98rem;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #fff7cf 0%, #ffd758 22%, #ffffff 46%, #ffd04a 70%, #fff6c0 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 14px rgba(255, 214, 87, 0.22));
+    animation: starShine 4s linear infinite;
+  }
+
+  .review-text {
+    margin-top: 14px;
+    color: rgba(247, 244, 238, 0.84);
+    line-height: 1.8;
+    font-size: 0.93rem;
+  }
+
+  .about-section {
+    position: relative;
+    padding: 34px 38px 36px;
+    border-bottom: 1px solid var(--border);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)),
+      radial-gradient(circle at 100% 0%, rgba(213, 174, 52, 0.08), transparent 24%);
+  }
+
+  .about-stage {
+    position: relative;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    --about-tilt-x: 0deg;
+    --about-tilt-y: 0deg;
+    --about-shift-x: 0px;
+    --about-shift-y: 0px;
+  }
+
+  .about-stage::before {
+    content: "";
+    position: absolute;
+    inset: auto 11% -14px 11%;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    filter: blur(20px);
+    opacity: 0.55;
+    transform: translateZ(-60px);
+    pointer-events: none;
+    animation: aboutShadowPulse 7.5s ease-in-out infinite;
+  }
+
+  .about-glow {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(40px);
+    pointer-events: none;
+    opacity: 0.78;
+  }
+
+  .about-glow-left {
+    inset: 20px auto auto -12px;
+    width: 180px;
+    height: 180px;
+    background: rgba(239, 28, 37, 0.16);
+    animation: aboutGlowLeft 6.8s ease-in-out infinite;
+  }
+
+  .about-glow-right {
+    inset: auto -8px 18px auto;
+    width: 210px;
+    height: 210px;
+    background: rgba(213, 174, 52, 0.18);
+    animation: aboutGlowRight 7.6s ease-in-out infinite;
+  }
+
+  .about-stage-motion {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: aboutFloat 8.5s ease-in-out infinite;
+  }
+
+  .about-card {
+    position: relative;
+    overflow: hidden;
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+      linear-gradient(135deg, rgba(239, 28, 37, 0.035), transparent 34%, transparent 72%, rgba(213, 174, 52, 0.05)),
+      rgba(255, 255, 255, 0.025);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 24px 40px rgba(0, 0, 0, 0.16),
+      0 0 44px rgba(213, 174, 52, 0.08);
+    transform:
+      translate3d(var(--about-shift-x), var(--about-shift-y), 0)
+      rotateX(var(--about-tilt-x))
+      rotateY(var(--about-tilt-y));
+    transition: transform 160ms ease-out, box-shadow 0.25s ease, border-color 0.25s ease;
+    will-change: transform;
+  }
+
+  .about-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 6px;
+    background: linear-gradient(180deg, var(--accent-red), var(--accent));
+    opacity: 0.95;
+  }
+
+  .about-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, transparent 24%, rgba(255, 255, 255, 0.08) 44%, transparent 56%),
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 28%);
+    opacity: 0.75;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .about-card:hover {
+    border-color: rgba(213, 174, 52, 0.26);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 28px 48px rgba(0, 0, 0, 0.22),
+      0 0 56px rgba(213, 174, 52, 0.12);
+  }
+
+  .about-card h2 {
+    margin-bottom: 14px;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    letter-spacing: 0.2px;
+  }
+
+  .about-card p {
+    max-width: 620px;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 0.98rem;
+  }
+
   .consult-header {
     padding: 42px 38px 30px;
     text-align: center;
@@ -621,24 +1446,92 @@
     margin-top: 26px;
   }
 
+  .payment-link-card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 22px 20px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.018)),
+      linear-gradient(135deg, rgba(239, 28, 37, 0.04), transparent 38%, rgba(213, 174, 52, 0.05)),
+      rgba(255, 255, 255, 0.02);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 20px 30px rgba(0, 0, 0, 0.14);
+  }
+
+  .payment-link-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(239, 28, 37, 0.94), rgba(213, 174, 52, 0.94));
+  }
+
+  .payment-link-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .payment-link-card h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  .payment-link-tag {
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  .payment-link-copy {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+
   .payment-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 52px;
-    padding: 0 22px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
-      rgba(255, 255, 255, 0.02);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    color: rgba(255, 255, 255, 0.88);
-    font: inherit;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: not-allowed;
-    opacity: 0.9;
+    width: 100%;
+    margin-top: 16px;
+    padding: 0 18px;
+    border-radius: 16px;
+    border: none;
+    background: linear-gradient(135deg, #f3ce57 0%, #d5ae34 45%, #b58913 100%);
+    box-shadow:
+      0 22px 34px rgba(213, 174, 52, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    color: #15110a;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+
+  .payment-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 26px 42px rgba(213, 174, 52, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    filter: brightness(1.02);
   }
 
   .payment-note {
@@ -807,6 +1700,104 @@
     }
   }
 
+  @keyframes aboutFloat {
+    0%,
+    100% {
+      transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    }
+
+    25% {
+      transform: translateY(-6px) rotateX(1.4deg) rotateY(-1.8deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotateX(-1deg) rotateY(1.8deg);
+    }
+
+    75% {
+      transform: translateY(-5px) rotateX(1deg) rotateY(-1.2deg);
+    }
+  }
+
+  @keyframes aboutGlowLeft {
+    0%,
+    100% {
+      opacity: 0.58;
+      transform: scale(0.96);
+    }
+
+    50% {
+      opacity: 0.88;
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes aboutGlowRight {
+    0%,
+    100% {
+      opacity: 0.62;
+      transform: scale(0.98);
+    }
+
+    50% {
+      opacity: 0.92;
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes aboutShadowPulse {
+    0%,
+    100% {
+      opacity: 0.46;
+      transform: translateZ(-60px) scale(0.96);
+    }
+
+    50% {
+      opacity: 0.68;
+      transform: translateZ(-60px) scale(1.03);
+    }
+  }
+
+  @keyframes reviewsGlowDrift {
+    0%,
+    100% {
+      opacity: 0.46;
+      transform: translate3d(0, 0, 0) scale(0.96);
+    }
+
+    50% {
+      opacity: 0.74;
+      transform: translate3d(0, -10px, 0) scale(1.08);
+    }
+  }
+
+  @keyframes reviewsScoreFloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes starShine {
+    from {
+      background-position: 0% 50%;
+      filter: drop-shadow(0 0 10px rgba(255, 214, 87, 0.16));
+    }
+
+    50% {
+      filter: drop-shadow(0 0 20px rgba(255, 214, 87, 0.3));
+    }
+
+    to {
+      background-position: 220% 50%;
+      filter: drop-shadow(0 0 10px rgba(255, 214, 87, 0.16));
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .logo-glow,
     .logo-aura,
@@ -815,18 +1806,46 @@
     .logo-shadow,
     .logo-motion,
     .logo-card-shell,
-    .brand-logo {
+    .brand-logo,
+    .about-glow,
+    .reviews-section::before,
+    .reviews-section::after,
+    .about-stage::before,
+    .about-stage-motion,
+    .reviews-scorecard,
+    .score-stars,
+    .review-stars {
       animation: none;
     }
 
-    .logo-card {
+    .logo-card,
+    .about-card {
       transition: none;
+    }
+
+    .review-card,
+    .reviews-grid.is-ready .review-card {
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
   }
 
   @media (max-width: 720px) {
+    .reviews-head {
+      grid-template-columns: 1fr;
+    }
+
+    .reviews-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     .consult-form {
       grid-template-columns: 1fr;
+    }
+
+    .showcase-overlay {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .field-half,
@@ -839,6 +1858,9 @@
 
   @media (max-width: 640px) {
     .brand-hero,
+    .work-showcase,
+    .reviews-section,
+    .about-section,
     .consult-header,
     .consult-body,
     .payment-section,
@@ -853,6 +1875,39 @@
 
     .logo-stage {
       width: min(100%, 320px);
+    }
+
+    .showcase-slides {
+      aspect-ratio: 4 / 5;
+      min-height: 320px;
+    }
+
+    .showcase-overlay {
+      padding: 22px 18px 18px;
+    }
+
+    .showcase-controls {
+      width: 100%;
+    }
+
+    .showcase-button {
+      flex: 1;
+    }
+
+    .reviews-deck-shell {
+      padding: 20px 16px;
+    }
+
+    .reviews-deck-controls {
+      width: 100%;
+    }
+
+    .reviews-button {
+      flex: 1;
+    }
+
+    .reviews-scorecard {
+      padding: 22px 18px 20px;
     }
 
     .payment-card {
@@ -873,22 +1928,748 @@
         <div class="logo-motion">
           <div class="logo-card-shell">
             <div class="logo-card">
-              <img class="brand-logo" src="QLM%20logo.PNG" alt="Quick Lift Moving logo">
+              <img class="brand-logo" src="QLM%20logo.PNG" alt="QuickLift Moving logo">
             </div>
           </div>
         </div>
       </div>
-      <p class="logo-caption">Quick Lift Moving</p>
+      <p class="logo-caption">QuickLift Moving</p>
+    </section>
+
+    <section class="about-section" aria-label="About QuickLift Moving">
+      <div class="about-stage" id="about-stage">
+        <div class="about-glow about-glow-left"></div>
+        <div class="about-glow about-glow-right"></div>
+        <div class="about-stage-motion">
+          <div class="about-card" id="about-card">
+            <span class="eyebrow">About</span>
+            <h2>Built on Trust, Reliability, and Respect</h2>
+            <p>Moving is more than transporting boxes - it's about trust. With years of hands-on experience, our team is built on professionalism, reliability, and respect for your home and belongings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-showcase" aria-label="Recent QuickLift Moving work">
+      <div class="showcase-frame">
+        <div class="showcase-slides" id="showcase-slides">
+          <article class="showcase-slide is-active">
+            <img src="QLM%20photo%201.png" alt="QuickLift Moving completed move photo 1">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%202.png" alt="QuickLift Moving completed move photo 2">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%203.png" alt="QuickLift Moving completed move photo 3">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%204.png" alt="QuickLift Moving completed move photo 4">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%205.png" alt="QuickLift Moving completed move photo 5">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%206.png" alt="QuickLift Moving completed move photo 6">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%207.png" alt="QuickLift Moving completed move photo 7">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%208.png" alt="QuickLift Moving completed move photo 8">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%209.png" alt="QuickLift Moving completed move photo 9">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%2010.png" alt="QuickLift Moving completed move photo 10">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%2011.png" alt="QuickLift Moving completed move photo 11">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%2012.png" alt="QuickLift Moving completed move photo 12">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%2013.png" alt="QuickLift Moving completed move photo 13">
+          </article>
+          <article class="showcase-slide">
+            <img src="QLM%20photo%2014.png" alt="QuickLift Moving completed move photo 14">
+          </article>
+        </div>
+
+        <div class="showcase-overlay">
+          <div class="showcase-copy">
+            <span class="showcase-kicker">Completed Jobs</span>
+            <p>Real moves, careful handling, and finished work from the QuickLift Moving team.</p>
+          </div>
+
+          <div class="showcase-controls">
+            <button class="showcase-button" id="showcase-prev" type="button">Prev</button>
+            <button class="showcase-button" id="showcase-next" type="button">Next</button>
+          </div>
+        </div>
+
+        <div class="showcase-progress">
+          <div class="showcase-progress-bar">
+            <span class="showcase-progress-fill" id="showcase-progress-fill"></span>
+          </div>
+          <div class="showcase-count" id="showcase-count">01 / 14</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-section" aria-labelledby="reviews-title">
+      <div class="reviews-head">
+        <div class="reviews-copy">
+          <span class="eyebrow">Customer Reviews</span>
+          <h2 id="reviews-title">40 Five-Star Reviews From Real QuickLift Moving Customers</h2>
+          <div class="review-pillars" aria-label="Highlighted strengths">
+            <span>Work Quality</span>
+            <span>Professionalism</span>
+            <span>Responsiveness</span>
+            <span>Careful Handling</span>
+            <span>Fair Pricing</span>
+            <span>Clear Communication</span>
+          </div>
+        </div>
+
+        <div class="reviews-scorecard">
+          <span class="score-label">Overall Rating</span>
+          <div class="score-number">5.0</div>
+          <div class="score-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="score-copy">Built from recent Thumbtack customer feedback, with 40 five-star reviews across moving, heavy lifting, junk removal, and furniture assembly jobs.</p>
+          <a class="reviews-link" href="https://www.thumbtack.com/de/new-castle/moving-companies/quicklift-moving/service/572974153873571869" target="_blank" rel="noreferrer">View on Thumbtack</a>
+        </div>
+      </div>
+
+      <div class="reviews-deck-shell">
+        <div class="reviews-toolbar">
+          <div class="reviews-swipe-label">Swipe through the reviews</div>
+          <div class="reviews-deck-controls">
+            <button class="reviews-button" id="reviews-prev" type="button">Prev</button>
+            <div class="reviews-count" id="reviews-count">01 / 40</div>
+            <button class="reviews-button" id="reviews-next" type="button">Next</button>
+          </div>
+        </div>
+
+        <div class="reviews-deck-progress" aria-hidden="true">
+          <span class="reviews-deck-progress-fill" id="reviews-progress-fill"></span>
+        </div>
+
+        <div class="reviews-grid" id="reviews-deck" aria-live="polite" aria-label="QuickLift Moving customer reviews">
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">S</span>
+              <div class="review-person-copy">
+                <h3>Stephanie K.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Quick response, great communication, and a friendly crew that moved everything with ease. Strong recommendation.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">Z</span>
+              <div class="review-person-copy">
+                <h3>Zhene G.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Polite, efficient, and careful with every belonging. The whole move felt seamless and much less daunting.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">R</span>
+              <div class="review-person-copy">
+                <h3>Raj K.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Great experience with Emanuel and the team. Everything was wrapped well, moved efficiently, and handled professionally.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">S</span>
+              <div class="review-person-copy">
+                <h3>Sol L.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">An outstanding experience transporting a patio set. Everything arrived in perfect condition and was handled with real care.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">J</span>
+              <div class="review-person-copy">
+                <h3>J.C.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Arrived on time with supplies, shrink wrapped what needed protection, and treated everything gently. Respectful, friendly, and easy to work with.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">C</span>
+              <div class="review-person-copy">
+                <h3>Chelsea M.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Very responsive and professional. The crew packed the POD incredibly well, wrapped what needed protection, and kept pricing straightforward.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">M</span>
+              <div class="review-person-copy">
+                <h3>Mery K.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">A smooth office furniture move from start to finish. The crew was on time, careful, and efficient without delays.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">J</span>
+              <div class="review-person-copy">
+                <h3>Jasmine M.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Helped move a heavy couch down four flights of stairs. Communication was strong, the crew was professional, and the job was done quickly.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">B</span>
+              <div class="review-person-copy">
+                <h3>Bryton B.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Super impressed with the quality, professionalism, and efficiency. Great communication and punctual service.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">H</span>
+              <div class="review-person-copy">
+                <h3>Hoda B.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Courteous, professional, and extremely responsive. They took great care with both the furniture and the home during a same-house move.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">A</span>
+              <div class="review-person-copy">
+                <h3>Alexander K.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Prompt, flexible, on time, and true to the quoted price. The team protected the furniture and stayed friendly and professional.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">H</span>
+              <div class="review-person-copy">
+                <h3>Hunter T.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Punctual, professional, and easy to work with while moving mattresses. Definitely recommended.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">S</span>
+              <div class="review-person-copy">
+                <h3>SCott B.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Handled an emergency move with timely updates, solid arrival estimates, and respect for the household.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">M</span>
+              <div class="review-person-copy">
+                <h3>Marlee R.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Moved rugs, a couch, and a bed with professionalism and an early arrival. Very helpful and easy to recommend.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">C</span>
+              <div class="review-person-copy">
+                <h3>Cynthia O.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Responsive from the start, showed up ready, and pushed through a difficult situation with professionalism, kindness, and strong communication.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">K</span>
+              <div class="review-person-copy">
+                <h3>Kalie H.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Great work that made the moving experience so much easier.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">D</span>
+              <div class="review-person-copy">
+                <h3>Dorian H.</h3>
+                <p>Junk Removal</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Professional, efficient, and focused while breaking down and removing a king-size bed. The job finished faster than expected.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">T</span>
+              <div class="review-person-copy">
+                <h3>Tree Y.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Professional, polite, and right on time. Packing was efficient and the service was easy to recommend.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">J</span>
+              <div class="review-person-copy">
+                <h3>Joe M.</h3>
+                <p>Furniture Assembly</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">An amazing job with consistent communication from the start through the end. Professional, polite, and punctual.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">D</span>
+              <div class="review-person-copy">
+                <h3>Dyncia E.</h3>
+                <p>Furniture Assembly</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Stepped in quickly after another contractor went quiet. Great customer service, flexibility, and pricing, plus enough trust to book another project right away.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">M</span>
+              <div class="review-person-copy">
+                <h3>Marlayne W.</h3>
+                <p>Furniture Assembly</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Responded within minutes, got the job done quickly and professionally, and offered a great price.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">A</span>
+              <div class="review-person-copy">
+                <h3>Alicia B.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Very friendly and professional with excellent communication. They arrived on time and completed the project quickly.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">D</span>
+              <div class="review-person-copy">
+                <h3>Destiny H.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Highly responsive from the first message and dependable even with sudden weather changes. A team worth partnering with again.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">M</span>
+              <div class="review-person-copy">
+                <h3>Matthew W.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">The turnaround from first contact to finished job was impressively fast, and every part of the experience stood out.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">M</span>
+              <div class="review-person-copy">
+                <h3>Mr O.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Showed up on time, stayed professional and courteous, and made the job easy to recommend.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">A</span>
+              <div class="review-person-copy">
+                <h3>Arif M.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">A great moving experience handled with care from start to finish. Highly recommended.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">J</span>
+              <div class="review-person-copy">
+                <h3>Jake W.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">One of the best crews out there. The delivery was handled carefully and the workmanship clearly stood out.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">H</span>
+              <div class="review-person-copy">
+                <h3>Hunter B.</h3>
+                <p>Moving Services</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Reliable, professional, and efficient. Everything was handled with care and the whole move felt stress-free.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">I</span>
+              <div class="review-person-copy">
+                <h3>Imani P.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Ten across the board. On time, fast, careful, professional, and genuinely kind.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">A</span>
+              <div class="review-person-copy">
+                <h3>Andre D.</h3>
+                <p>Moving Services</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Showed up on time, worked efficiently, and handled the furniture carefully. The move stayed transparent and stress-free.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">S</span>
+              <div class="review-person-copy">
+                <h3>Sean M.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Arrived early and worked hard to get the job done. Easy to recommend.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">T</span>
+              <div class="review-person-copy">
+                <h3>Thomas H.</h3>
+                <p>Junk Removal</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Very pleased with Emmanuel's professionalism and promptness.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">K</span>
+              <div class="review-person-copy">
+                <h3>Katherine S.</h3>
+                <p>Local Moving (Under 50 Miles)</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Super responsive and accommodating, while staying professional and courteous the whole way through.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">M</span>
+              <div class="review-person-copy">
+                <h3>Melane B.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Very courteous and professional. A team worth using again.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">K</span>
+              <div class="review-person-copy">
+                <h3>Keith S.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Quick response, great communication, and reasonable pricing. Easy recommendation for the future.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">N</span>
+              <div class="review-person-copy">
+                <h3>Naeem M.</h3>
+                <p>Furniture Assembly</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Great work with no complaints.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">D</span>
+              <div class="review-person-copy">
+                <h3>Decarl S.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Very professional, fast, and efficient from start to finish.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">T</span>
+              <div class="review-person-copy">
+                <h3>Teana H.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">They were great and made everything feel seamless.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">N</span>
+              <div class="review-person-copy">
+                <h3>Nabila J.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Great at the job and very kind and respectful throughout.</p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-person">
+              <span class="review-avatar">H</span>
+              <div class="review-person-copy">
+                <h3>Hannah R.</h3>
+                <p>Furniture Moving and Heavy Lifting</p>
+              </div>
+            </div>
+            <span class="review-source">Thumbtack</span>
+          </div>
+          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">Five-star Thumbtack feedback shared for a furniture move involving boxes, mattresses, and multiple household items.</p>
+        </article>
+        </div>
+      </div>
     </section>
 
     <section class="consult-header">
       <span class="eyebrow">Free Estimate</span>
       <h1>Request a Free Estimate</h1>
-      <p>Tell Quick Lift Moving a little about your move and we'll follow up with a free quote and next steps.</p>
+      <p>Tell QuickLift Moving a little about your move and we'll follow up with a free quote and next steps.</p>
     </section>
 
     <section class="consult-body">
-      <form class="consult-form" action="send.php" method="POST" enctype="multipart/form-data">
+      <form class="consult-form" action="https://formsubmit.co/quickliftmovers917@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="New Free Estimate Request - QuickLift Moving">
+        <input type="hidden" name="_template" value="table">
         <div class="field field-half">
           <label for="name">Full Name</label>
           <input id="name" type="text" name="name" placeholder="Full Name" required>
@@ -917,7 +2698,7 @@
         <div class="field field-full">
           <label for="photos">Photos of Items to Move (Optional)</label>
           <div class="upload-zone" id="photo-upload" tabindex="0" role="button" aria-describedby="upload-status">
-            <input class="file-input" id="photos" type="file" name="photos[]" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
+            <input class="file-input" id="photos" type="file" name="attachment" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
             <div class="upload-icon">+</div>
             <div class="upload-title">Drag photos here or browse</div>
             <p class="upload-copy">Upload a few pictures of the items you're moving to help with the estimate. Up to 4 images.</p>
@@ -927,7 +2708,7 @@
           </div>
         </div>
 
-        <p class="form-note">Share your name, email, phone number, move details, and optional photos so Quick Lift Moving can review everything and reach out with a free quote.</p>
+        <p class="form-note">Share your name, email, phone number, move details, and optional photos so QuickLift Moving can review everything and reach out with a free quote.</p>
 
         <button class="submit-button" type="submit">Submit Request</button>
       </form>
@@ -935,21 +2716,40 @@
 
     <section class="payment-section" id="payment">
       <div class="payment-card">
-        <span class="eyebrow">Squarespace Payment</span>
+        <span class="eyebrow">Payment Options</span>
         <h2>Need to Make a Payment?</h2>
-        <p>If you're ready to pay Quick Lift Moving, this section can send customers directly to a Squarespace checkout for deposits, balances, or approved service payments.</p>
+        <p>Customers can use the DOT card payment link below to choose from your client's available payment methods in one place.</p>
         <div class="payment-actions">
-          <button class="payment-button" type="button" disabled>Squarespace Checkout Link Coming Soon</button>
+          <div class="payment-link-card">
+            <div class="payment-link-head">
+              <h3>DOT Card Payment Link</h3>
+              <span class="payment-link-tag">All Payment Methods</span>
+            </div>
+            <a class="payment-button" href="https://dot.cards/quickliftmoving1?utm_source=nfc&amp;e=ZGV2aWNlLWVOVTVseXhlcHZzLXcyLWI" target="_blank" rel="noreferrer">PAY NOW</a>
+          </div>
         </div>
-        <p class="payment-note">Once you send over the live Squarespace payment link, I can turn this into an active payment button right here underneath the free estimate form.</p>
+        <p class="payment-note">This button opens the live QuickLift Moving DOT card page with the available payment methods.</p>
       </div>
     </section>
 
-    <p class="footer-copy">Quick Lift Moving Free Estimate Request</p>
+    <p class="footer-copy">QuickLift Moving Free Estimate Request</p>
   </main>
   <script>
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const logoStage = document.querySelector(".logo-stage");
+    const showcaseSlides = Array.from(document.querySelectorAll(".showcase-slide"));
+    const showcasePrev = document.getElementById("showcase-prev");
+    const showcaseNext = document.getElementById("showcase-next");
+    const showcaseCount = document.getElementById("showcase-count");
+    const showcaseProgressFill = document.getElementById("showcase-progress-fill");
+    const showcaseFrame = document.querySelector(".showcase-frame");
+    const reviewsDeck = document.getElementById("reviews-deck");
+    const reviewCards = Array.from(document.querySelectorAll(".review-card"));
+    const reviewsPrev = document.getElementById("reviews-prev");
+    const reviewsNext = document.getElementById("reviews-next");
+    const reviewsCount = document.getElementById("reviews-count");
+    const reviewsProgressFill = document.getElementById("reviews-progress-fill");
+    const aboutStage = document.getElementById("about-stage");
     const photoInput = document.getElementById("photos");
     const photoUpload = document.getElementById("photo-upload");
     const photoBrowseButton = document.getElementById("browse-photos");
@@ -982,6 +2782,234 @@
       logoStage.addEventListener("pointermove", setLogoTilt);
       logoStage.addEventListener("pointerleave", resetLogoTilt);
       logoStage.addEventListener("pointercancel", resetLogoTilt);
+    }
+
+    if (aboutStage && !prefersReducedMotion.matches) {
+      const setAboutTilt = (event) => {
+        const rect = aboutStage.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 10;
+        const rotateX = (0.5 - y) * 8;
+        const shiftX = (x - 0.5) * 6;
+        const shiftY = (y - 0.5) * 5;
+
+        aboutStage.style.setProperty("--about-tilt-x", rotateX.toFixed(2) + "deg");
+        aboutStage.style.setProperty("--about-tilt-y", rotateY.toFixed(2) + "deg");
+        aboutStage.style.setProperty("--about-shift-x", shiftX.toFixed(2) + "px");
+        aboutStage.style.setProperty("--about-shift-y", shiftY.toFixed(2) + "px");
+      };
+
+      const resetAboutTilt = () => {
+        aboutStage.style.setProperty("--about-tilt-x", "0deg");
+        aboutStage.style.setProperty("--about-tilt-y", "0deg");
+        aboutStage.style.setProperty("--about-shift-x", "0px");
+        aboutStage.style.setProperty("--about-shift-y", "0px");
+      };
+
+      aboutStage.addEventListener("pointermove", setAboutTilt);
+      aboutStage.addEventListener("pointerleave", resetAboutTilt);
+      aboutStage.addEventListener("pointercancel", resetAboutTilt);
+    }
+
+    if (showcaseSlides.length > 0 && showcaseCount && showcaseProgressFill) {
+      let showcaseIndex = 0;
+      let showcaseTimer = null;
+
+      const renderShowcase = () => {
+        showcaseSlides.forEach((slide, index) => {
+          slide.classList.toggle("is-active", index === showcaseIndex);
+        });
+
+        showcaseCount.textContent = String(showcaseIndex + 1).padStart(2, "0") + " / " + String(showcaseSlides.length).padStart(2, "0");
+        showcaseProgressFill.style.width = ((showcaseIndex + 1) / showcaseSlides.length) * 100 + "%";
+      };
+
+      const nextShowcaseSlide = () => {
+        showcaseIndex = (showcaseIndex + 1) % showcaseSlides.length;
+        renderShowcase();
+      };
+
+      const previousShowcaseSlide = () => {
+        showcaseIndex = (showcaseIndex - 1 + showcaseSlides.length) % showcaseSlides.length;
+        renderShowcase();
+      };
+
+      const stopShowcaseAutoplay = () => {
+        if (showcaseTimer) {
+          clearInterval(showcaseTimer);
+          showcaseTimer = null;
+        }
+      };
+
+      const startShowcaseAutoplay = () => {
+        stopShowcaseAutoplay();
+
+        if (prefersReducedMotion.matches || showcaseSlides.length <= 1) {
+          return;
+        }
+
+        showcaseTimer = window.setInterval(nextShowcaseSlide, 4200);
+      };
+
+      if (showcasePrev) {
+        showcasePrev.addEventListener("click", () => {
+          previousShowcaseSlide();
+          startShowcaseAutoplay();
+        });
+      }
+
+      if (showcaseNext) {
+        showcaseNext.addEventListener("click", () => {
+          nextShowcaseSlide();
+          startShowcaseAutoplay();
+        });
+      }
+
+      if (showcaseFrame) {
+        showcaseFrame.addEventListener("mouseenter", stopShowcaseAutoplay);
+        showcaseFrame.addEventListener("mouseleave", startShowcaseAutoplay);
+      }
+
+      renderShowcase();
+      startShowcaseAutoplay();
+    }
+
+    if (reviewsDeck && reviewCards.length > 0 && reviewsCount && reviewsProgressFill) {
+      let reviewIndex = 0;
+      let reviewTimer = null;
+      let pointerStartX = 0;
+      let pointerStartY = 0;
+      let activePointerId = null;
+
+      const stopReviewsAutoplay = () => {
+        if (reviewTimer) {
+          clearInterval(reviewTimer);
+          reviewTimer = null;
+        }
+      };
+
+      const setReviewsHeight = () => {
+        window.requestAnimationFrame(() => {
+          const activeCard = reviewCards[reviewIndex];
+
+          if (!activeCard) {
+            return;
+          }
+
+          const activeHeight = Math.ceil(activeCard.getBoundingClientRect().height);
+          reviewsDeck.style.height = activeHeight + 96 + "px";
+        });
+      };
+
+      const renderReviews = () => {
+        const totalReviews = reviewCards.length;
+
+        reviewCards.forEach((card, index) => {
+          const forwardDistance = (index - reviewIndex + totalReviews) % totalReviews;
+          const backwardDistance = (reviewIndex - index + totalReviews) % totalReviews;
+          let state = "hidden-right";
+
+          if (forwardDistance === 0) {
+            state = "active";
+          } else if (forwardDistance === 1) {
+            state = "next";
+          } else if (forwardDistance === 2) {
+            state = "next2";
+          } else if (backwardDistance < forwardDistance) {
+            state = "hidden-left";
+          }
+
+          card.dataset.cardState = state;
+          card.setAttribute("aria-hidden", state === "active" ? "false" : "true");
+        });
+
+        reviewsCount.textContent = String(reviewIndex + 1).padStart(2, "0") + " / " + String(reviewCards.length).padStart(2, "0");
+        reviewsProgressFill.style.width = ((reviewIndex + 1) / reviewCards.length) * 100 + "%";
+        setReviewsHeight();
+      };
+
+      const goToNextReview = () => {
+        reviewIndex = (reviewIndex + 1) % reviewCards.length;
+        renderReviews();
+      };
+
+      const goToPreviousReview = () => {
+        reviewIndex = (reviewIndex - 1 + reviewCards.length) % reviewCards.length;
+        renderReviews();
+      };
+
+      const startReviewsAutoplay = () => {
+        stopReviewsAutoplay();
+
+        if (prefersReducedMotion.matches || reviewCards.length <= 1) {
+          return;
+        }
+
+        reviewTimer = window.setInterval(goToNextReview, 5200);
+      };
+
+      reviewsDeck.classList.add("is-ready");
+      renderReviews();
+      startReviewsAutoplay();
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(setReviewsHeight);
+      }
+
+      if (reviewsPrev) {
+        reviewsPrev.addEventListener("click", () => {
+          goToPreviousReview();
+          startReviewsAutoplay();
+        });
+      }
+
+      if (reviewsNext) {
+        reviewsNext.addEventListener("click", () => {
+          goToNextReview();
+          startReviewsAutoplay();
+        });
+      }
+
+      reviewsDeck.addEventListener("mouseenter", stopReviewsAutoplay);
+      reviewsDeck.addEventListener("mouseleave", startReviewsAutoplay);
+
+      reviewsDeck.addEventListener("pointerdown", (event) => {
+        stopReviewsAutoplay();
+        activePointerId = event.pointerId;
+        pointerStartX = event.clientX;
+        pointerStartY = event.clientY;
+      });
+
+      reviewsDeck.addEventListener("pointerup", (event) => {
+        if (activePointerId !== event.pointerId) {
+          return;
+        }
+
+        const deltaX = event.clientX - pointerStartX;
+        const deltaY = event.clientY - pointerStartY;
+
+        activePointerId = null;
+
+        if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY)) {
+          return;
+        }
+
+        if (deltaX < 0) {
+          goToNextReview();
+        } else {
+          goToPreviousReview();
+        }
+
+        startReviewsAutoplay();
+      });
+
+      reviewsDeck.addEventListener("pointercancel", () => {
+        activePointerId = null;
+      });
+
+      window.addEventListener("resize", setReviewsHeight);
+      window.addEventListener("load", setReviewsHeight);
     }
 
     if (photoInput && photoUpload && uploadList && uploadStatus) {
@@ -1056,3 +3084,5 @@
   </script>
 </body>
 </html>
+
+
