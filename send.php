@@ -57,6 +57,10 @@ if ($submitted_at_eastern === "") {
 }
 
 $safe_submitted_at_eastern = htmlspecialchars($submitted_at_eastern, ENT_QUOTES, "UTF-8");
+$subject_name = preg_replace("/[\r\n]+/", " ", $name);
+$subject_name = trim($subject_name) !== "" ? trim($subject_name) : "Website Lead";
+$subject_time = preg_replace("/[\r\n]+/", " ", $submitted_at_eastern);
+$subject_time = trim($subject_time);
 
 $attachments = array();
 $photo_names = array();
@@ -172,7 +176,7 @@ if (isset($_FILES["photos"]) && is_array($_FILES["photos"]["name"])) {
 
 // Free estimate requests are delivered to the current inbox.
 $to = "quickliftmovers917@gmail.com";
-$subject = "New Free Estimate Request - QuickLift Moving";
+$subject = "QuickLift Moving Estimate - {$subject_name} - {$subject_time}";
 
 $body = "You have received a new free estimate request.\n\n";
 $body .= "Submitted At (Eastern Time): {$safe_submitted_at_eastern}\n";
