@@ -2670,6 +2670,7 @@
       <form class="consult-form" action="https://formsubmit.co/quickliftmovers917@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Free Estimate Request - QuickLift Moving">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="submitted_at_eastern" id="submitted-at-eastern">
         <div class="field field-half">
           <label for="name">Full Name</label>
           <input id="name" type="text" name="name" placeholder="Full Name" required>
@@ -2755,6 +2756,31 @@
     const photoBrowseButton = document.getElementById("browse-photos");
     const uploadList = document.getElementById("upload-list");
     const uploadStatus = document.getElementById("upload-status");
+    const submittedAtEastern = document.getElementById("submitted-at-eastern");
+
+    if (submittedAtEastern) {
+      const easternTimeFormatter = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+        timeZoneName: "short"
+      });
+
+      const setSubmittedAtEastern = () => {
+        submittedAtEastern.value = easternTimeFormatter.format(new Date());
+      };
+
+      setSubmittedAtEastern();
+
+      if (submittedAtEastern.form) {
+        submittedAtEastern.form.addEventListener("submit", setSubmittedAtEastern);
+      }
+    }
 
     if (logoStage && !prefersReducedMotion.matches) {
       const setLogoTilt = (event) => {
