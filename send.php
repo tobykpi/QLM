@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("America/New_York");
+
 function redirect_with_alert($message)
 {
     echo "<script>
@@ -34,6 +36,7 @@ $email = trim($_POST["email"] ?? "");
 $phone = trim($_POST["phone"] ?? "");
 $organization = trim($_POST["organization"] ?? "");
 $message = trim($_POST["message"] ?? "");
+$submitted_at_eastern = trim($_POST["submitted_at_eastern"] ?? "");
 
 if ($name === "" || $email === "" || $phone === "" || $message === "") {
     redirect_with_alert("Please complete the required fields before submitting.");
@@ -48,6 +51,12 @@ $safe_email = htmlspecialchars($email, ENT_QUOTES, "UTF-8");
 $safe_phone = htmlspecialchars($phone, ENT_QUOTES, "UTF-8");
 $safe_organization = htmlspecialchars($organization, ENT_QUOTES, "UTF-8");
 $safe_message = htmlspecialchars($message, ENT_QUOTES, "UTF-8");
+
+if ($submitted_at_eastern === "") {
+    $submitted_at_eastern = date("F j, Y g:i:s A T");
+}
+
+$safe_submitted_at_eastern = htmlspecialchars($submitted_at_eastern, ENT_QUOTES, "UTF-8");
 
 $attachments = array();
 $photo_names = array();
@@ -166,6 +175,7 @@ $to = "quickliftmovers917@gmail.com";
 $subject = "New Free Estimate Request - QuickLift Moving";
 
 $body = "You have received a new free estimate request.\n\n";
+$body .= "Submitted At (Eastern Time): {$safe_submitted_at_eastern}\n";
 $body .= "Full Name: {$safe_name}\n";
 $body .= "Email: {$safe_email}\n";
 $body .= "Phone Number: {$safe_phone}\n";
