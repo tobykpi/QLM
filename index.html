@@ -1397,6 +1397,51 @@
     line-height: 1.8;
   }
 
+  .submission-success {
+    grid-column: 1 / -1;
+    display: none;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid rgba(243, 206, 87, 0.35);
+    border-radius: 16px;
+    background:
+      radial-gradient(circle at 8% 20%, rgba(243, 206, 87, 0.18), transparent 32%),
+      linear-gradient(135deg, rgba(243, 206, 87, 0.14), rgba(255, 255, 255, 0.035));
+    box-shadow: 0 20px 46px rgba(0, 0, 0, 0.22);
+  }
+
+  .submission-success.is-visible {
+    display: flex;
+    animation: successReveal 0.5s ease both;
+  }
+
+  .success-mark {
+    display: grid;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f3ce57, #b58913);
+    color: #15110a;
+    font-weight: 900;
+    box-shadow: 0 12px 24px rgba(213, 174, 52, 0.25);
+  }
+
+  .submission-success strong {
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+
+  .submission-success span:last-child {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
   .payment-section {
     padding: 0 38px 40px;
     border-top: 1px solid var(--border);
@@ -1582,6 +1627,15 @@
     transform: rotate(18deg) translateX(460%);
   }
 
+  .submit-button.is-submitting {
+    pointer-events: none;
+    filter: saturate(0.95) brightness(1.04);
+  }
+
+  .submit-button.is-submitting::after {
+    animation: buttonSweep 1s ease-in-out infinite;
+  }
+
   .footer-copy {
     padding: 0 38px 38px;
     text-align: center;
@@ -1589,6 +1643,28 @@
     font-size: 0.8rem;
     letter-spacing: 2.2px;
     text-transform: uppercase;
+  }
+
+  @keyframes successReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes buttonSweep {
+    0% {
+      transform: rotate(18deg) translateX(-180%);
+    }
+
+    100% {
+      transform: rotate(18deg) translateX(460%);
+    }
   }
 
   @keyframes logoEntrance {
@@ -1851,6 +1927,7 @@
     .field-half,
     .field-full,
     .form-note,
+    .submission-success,
     .submit-button {
       grid-column: auto;
     }
@@ -2660,17 +2737,27 @@
       </div>
     </section>
 
-    <section class="consult-header">
+    <section class="consult-header" id="estimate">
       <span class="eyebrow">Free Estimate</span>
       <h1>Request a Free Estimate</h1>
       <p>Tell QuickLift Moving a little about your move and we'll follow up with a free quote and next steps.</p>
     </section>
 
     <section class="consult-body">
-      <form class="consult-form" action="mailto:quickliftmovers917@gmail.com" method="post" enctype="text/plain">
+      <form class="consult-form" action="https://flowform.to/submit" method="POST">
+        <input type="hidden" name="_to" value="quickliftmovers917@gmail.com">
         <input type="hidden" name="_subject" id="submission-subject" value="New Free Estimate Request - QuickLift Moving">
-        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://quickliftmoving.us/?submitted=true#estimate">
         <input type="hidden" name="submitted_at_eastern" id="submitted-at-eastern">
+        <input type="hidden" name="photos_selected" id="photos-selected" value="None">
+        <input type="text" name="hp_email" tabindex="-1" autocomplete="off" style="display: none;">
+        <div class="submission-success" id="submission-success" role="status" aria-live="polite">
+          <span class="success-mark">✓</span>
+          <span>
+            <strong>Request submitted</strong>
+            <span>Thanks for reaching out. QuickLift Moving received your estimate request and will follow up soon.</span>
+          </span>
+        </div>
         <div class="field field-half">
           <label for="name">Full Name</label>
           <input id="name" type="text" name="name" placeholder="Full Name" required>
@@ -2699,7 +2786,7 @@
         <div class="field field-full">
           <label for="photos">Photos of Items to Move (Optional)</label>
           <div class="upload-zone" id="photo-upload" tabindex="0" role="button" aria-describedby="upload-status">
-            <input class="file-input" id="photos" type="file" name="photos[]" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
+            <input class="file-input" id="photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
             <div class="upload-icon">+</div>
             <div class="upload-title">Drag photos here or browse</div>
             <p class="upload-copy">Upload a few pictures of the items you're moving to help with the estimate. Up to 4 images.</p>
@@ -2711,7 +2798,7 @@
 
         <p class="form-note">Share your name, email, phone number, move details, and optional photos so QuickLift Moving can review everything and reach out with a free quote.</p>
 
-        <button class="submit-button" type="submit">Submit Request</button>
+        <button class="submit-button" id="submit-request" type="submit">Submit Request</button>
       </form>
     </section>
 
@@ -2759,7 +2846,20 @@
     const nameInput = document.getElementById("name");
     const submissionSubject = document.getElementById("submission-subject");
     const submittedAtEastern = document.getElementById("submitted-at-eastern");
-    const estimateForm = document.querySelector(".consult-form");
+    const photosSelected = document.getElementById("photos-selected");
+    const submissionSuccess = document.getElementById("submission-success");
+    const submitRequest = document.getElementById("submit-request");
+
+    if (new URLSearchParams(window.location.search).get("submitted") === "true") {
+      if (submissionSuccess) {
+        submissionSuccess.classList.add("is-visible");
+        submissionSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      if (window.history.replaceState) {
+        window.history.replaceState(null, "", window.location.pathname + "#estimate");
+      }
+    }
 
     if (submittedAtEastern || submissionSubject) {
       const easternTimeFormatter = new Intl.DateTimeFormat("en-US", {
@@ -2791,6 +2891,9 @@
         const formattedEasternTime = easternTimeFormatter.format(now);
         const formattedSubjectTime = easternSubjectFormatter.format(now);
         const submitterName = nameInput && nameInput.value.trim() !== "" ? nameInput.value.trim() : "Website Lead";
+        const selectedPhotos = photoInput && photoInput.files.length > 0
+          ? Array.from(photoInput.files).map((file) => file.name).join(", ")
+          : "None";
 
         if (submittedAtEastern) {
           submittedAtEastern.value = formattedEasternTime;
@@ -2798,6 +2901,10 @@
 
         if (submissionSubject) {
           submissionSubject.value = "QuickLift Moving Estimate - " + submitterName + " - " + formattedSubjectTime;
+        }
+
+        if (photosSelected) {
+          photosSelected.value = selectedPhotos;
         }
       };
 
@@ -2812,40 +2919,10 @@
       }
     }
 
-    if (estimateForm) {
-      estimateForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        if (!estimateForm.reportValidity()) {
-          return;
-        }
-
-        const submittedAt = new Date().toLocaleString("en-US", {
-          timeZone: "America/New_York",
-          dateStyle: "long",
-          timeStyle: "medium"
-        });
-        const selectedPhotos = photoInput && photoInput.files.length > 0
-          ? Array.from(photoInput.files).map((file) => file.name).join(", ")
-          : "None";
-        const subject = submissionSubject && submissionSubject.value.trim() !== ""
-          ? submissionSubject.value.trim()
-          : "QuickLift Moving Estimate Request";
-        const body = [
-          "New free estimate request",
-          "",
-          "Submitted At (Eastern Time): " + submittedAt,
-          "Full Name: " + document.getElementById("name").value.trim(),
-          "Email: " + document.getElementById("email").value.trim(),
-          "Phone Number: " + document.getElementById("phone").value.trim(),
-          "Organization: " + (document.getElementById("organization").value.trim() || "N/A"),
-          "Photos Selected: " + selectedPhotos,
-          "",
-          "Move Details:",
-          document.getElementById("message").value.trim()
-        ].join("\n");
-
-        window.location.href = "mailto:quickliftmovers917@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    if (submitRequest && submitRequest.form) {
+      submitRequest.form.addEventListener("submit", () => {
+        submitRequest.classList.add("is-submitting");
+        submitRequest.textContent = "Sending Request...";
       });
     }
 
