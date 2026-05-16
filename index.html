@@ -2667,7 +2667,7 @@
     </section>
 
     <section class="consult-body">
-      <form class="consult-form" action="send.php" method="POST" enctype="multipart/form-data">
+      <form class="consult-form" action="mailto:quickliftmovers917@gmail.com" method="post" enctype="text/plain">
         <input type="hidden" name="_subject" id="submission-subject" value="New Free Estimate Request - QuickLift Moving">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="submitted_at_eastern" id="submitted-at-eastern">
@@ -2761,13 +2761,6 @@
     const submittedAtEastern = document.getElementById("submitted-at-eastern");
     const estimateForm = document.querySelector(".consult-form");
 
-    if (estimateForm && ["localhost", "127.0.0.1"].includes(window.location.hostname)) {
-      estimateForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        alert("This local preview server cannot send the estimate form because it does not run PHP. Please test the form on a PHP-capable server with send.php uploaded.");
-      });
-    }
-
     if (submittedAtEastern || submissionSubject) {
       const easternTimeFormatter = new Intl.DateTimeFormat("en-US", {
         timeZone: "America/New_York",
@@ -2817,6 +2810,43 @@
       if (submittedAtEastern && submittedAtEastern.form) {
         submittedAtEastern.form.addEventListener("submit", updateSubmissionMetadata);
       }
+    }
+
+    if (estimateForm) {
+      estimateForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!estimateForm.reportValidity()) {
+          return;
+        }
+
+        const submittedAt = new Date().toLocaleString("en-US", {
+          timeZone: "America/New_York",
+          dateStyle: "long",
+          timeStyle: "medium"
+        });
+        const selectedPhotos = photoInput && photoInput.files.length > 0
+          ? Array.from(photoInput.files).map((file) => file.name).join(", ")
+          : "None";
+        const subject = submissionSubject && submissionSubject.value.trim() !== ""
+          ? submissionSubject.value.trim()
+          : "QuickLift Moving Estimate Request";
+        const body = [
+          "New free estimate request",
+          "",
+          "Submitted At (Eastern Time): " + submittedAt,
+          "Full Name: " + document.getElementById("name").value.trim(),
+          "Email: " + document.getElementById("email").value.trim(),
+          "Phone Number: " + document.getElementById("phone").value.trim(),
+          "Organization: " + (document.getElementById("organization").value.trim() || "N/A"),
+          "Photos Selected: " + selectedPhotos,
+          "",
+          "Move Details:",
+          document.getElementById("message").value.trim()
+        ].join("\n");
+
+        window.location.href = "mailto:quickliftmovers917@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      });
     }
 
     if (logoStage && !prefersReducedMotion.matches) {
