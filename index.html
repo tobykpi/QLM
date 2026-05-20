@@ -2744,7 +2744,7 @@
     </section>
 
     <section class="consult-body">
-      <form class="consult-form" action="https://flowform.to/submit" method="POST">
+      <form class="consult-form" action="send.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_to" value="quickliftmovers917@gmail.com">
         <input type="hidden" name="_subject" id="submission-subject" value="New Free Estimate Request - QuickLift Moving">
         <input type="hidden" name="_next" value="https://quickliftmoving.us/?submitted=true#estimate">
@@ -2786,7 +2786,7 @@
         <div class="field field-full">
           <label for="photos">Photos of Items to Move (Optional)</label>
           <div class="upload-zone" id="photo-upload" tabindex="0" role="button" aria-describedby="upload-status">
-            <input class="file-input" id="photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
+            <input class="file-input" id="photos" type="file" name="photos[]" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
             <div class="upload-icon">+</div>
             <div class="upload-title">Drag photos here or browse</div>
             <p class="upload-copy">Upload a few pictures of the items you're moving to help with the estimate. Up to 4 images.</p>

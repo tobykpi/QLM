@@ -26,6 +26,38 @@ function mime_type_from_extension($extension)
     return isset($mime_types[$extension]) ? $mime_types[$extension] : "";
 }
 
+function build_html_body($safe_submitted_at_eastern, $safe_name, $safe_email, $safe_phone, $safe_organization, $safe_message, $attachments)
+{
+    $html = "<!doctype html><html><body style=\"font-family:Arial,sans-serif;color:#1f2933;line-height:1.5;\">";
+    $html .= "<h2 style=\"margin:0 0 16px;\">New QuickLift Moving Estimate Request</h2>";
+    $html .= "<table cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse:collapse;\">";
+    $html .= "<tr><td><strong>Submitted At (Eastern Time)</strong></td><td>{$safe_submitted_at_eastern}</td></tr>";
+    $html .= "<tr><td><strong>Full Name</strong></td><td>{$safe_name}</td></tr>";
+    $html .= "<tr><td><strong>Email</strong></td><td>{$safe_email}</td></tr>";
+    $html .= "<tr><td><strong>Phone Number</strong></td><td>{$safe_phone}</td></tr>";
+    $html .= "<tr><td><strong>Organization</strong></td><td>" . ($safe_organization !== "" ? $safe_organization : "N/A") . "</td></tr>";
+    $html .= "</table>";
+    $html .= "<h3 style=\"margin:20px 0 8px;\">Move Details</h3>";
+    $html .= "<p style=\"white-space:pre-wrap;margin:0 0 20px;\">{$safe_message}</p>";
+
+    if (!empty($attachments)) {
+        $html .= "<h3 style=\"margin:20px 0 12px;\">Uploaded Photos</h3>";
+
+        foreach ($attachments as $attachment) {
+            $html .= "<div style=\"margin:0 0 18px;\">";
+            $html .= "<p style=\"margin:0 0 6px;font-weight:bold;\">" . htmlspecialchars($attachment["name"], ENT_QUOTES, "UTF-8") . "</p>";
+            $html .= "<img src=\"cid:" . htmlspecialchars($attachment["cid"], ENT_QUOTES, "UTF-8") . "\" alt=\"" . htmlspecialchars($attachment["name"], ENT_QUOTES, "UTF-8") . "\" style=\"display:block;max-width:620px;width:100%;height:auto;border:1px solid #d8dee5;border-radius:6px;\">";
+            $html .= "</div>";
+        }
+    } else {
+        $html .= "<p><strong>Photos Included:</strong> None</p>";
+    }
+
+    $html .= "</body></html>";
+
+    return $html;
+}
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: index.html");
     exit;
@@ -164,6 +196,7 @@ if (isset($_FILES["photos"]) && is_array($_FILES["photos"]["name"])) {
             "name" => $safe_file_name,
             "type" => $mime_type,
             "tmp_name" => $tmp_name,
+            "cid" => "photo-" . $photo_count . "-" . md5($safe_file_name . microtime(true)) . "@quickliftmoving.com",
         );
 
         $photo_names[] = $safe_file_name;
@@ -192,13 +225,22 @@ $headers .= "Reply-To: {$safe_email}\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 
 if (!empty($attachments)) {
-    $boundary = "==Multipart_Boundary_x" . md5((string) microtime()) . "x";
-    $headers .= "Content-Type: multipart/mixed; boundary=\"{$boundary}\"\r\n";
+    $related_boundary = "==Related_Boundary_x" . md5((string) microtime()) . "x";
+    $alternative_boundary = "==Alternative_Boundary_x" . md5((string) microtime(true)) . "x";
+    $headers .= "Content-Type: multipart/related; boundary=\"{$related_boundary}\"; type=\"multipart/alternative\"\r\n";
+    $html_body = build_html_body($safe_submitted_at_eastern, $safe_name, $safe_email, $safe_phone, $safe_organization, $safe_message, $attachments);
 
-    $email_message = "--{$boundary}\r\n";
+    $email_message = "--{$related_boundary}\r\n";
+    $email_message .= "Content-Type: multipart/alternative; boundary=\"{$alternative_boundary}\"\r\n\r\n";
+    $email_message .= "--{$alternative_boundary}\r\n";
     $email_message .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $email_message .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
-    $email_message .= $body . "\r\n";
+    $email_message .= $body . "\r\n\r\n";
+    $email_message .= "--{$alternative_boundary}\r\n";
+    $email_message .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $email_message .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+    $email_message .= $html_body . "\r\n\r\n";
+    $email_message .= "--{$alternative_boundary}--\r\n";
 
     foreach ($attachments as $attachment) {
         $file_contents = file_get_contents($attachment["tmp_name"]);
@@ -207,14 +249,16 @@ if (!empty($attachments)) {
             redirect_with_alert("One of the uploaded photos could not be attached. Please try again.");
         }
 
-        $email_message .= "--{$boundary}\r\n";
+        $email_message .= "--{$related_boundary}\r\n";
         $email_message .= "Content-Type: " . $attachment["type"] . "; name=\"" . $attachment["name"] . "\"\r\n";
-        $email_message .= "Content-Disposition: attachment; filename=\"" . $attachment["name"] . "\"\r\n";
+        $email_message .= "Content-Disposition: inline; filename=\"" . $attachment["name"] . "\"\r\n";
+        $email_message .= "Content-ID: <" . $attachment["cid"] . ">\r\n";
+        $email_message .= "X-Attachment-Id: " . $attachment["cid"] . "\r\n";
         $email_message .= "Content-Transfer-Encoding: base64\r\n\r\n";
         $email_message .= chunk_split(base64_encode($file_contents)) . "\r\n";
     }
 
-    $email_message .= "--{$boundary}--";
+    $email_message .= "--{$related_boundary}--";
 } else {
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $email_message = $body;
