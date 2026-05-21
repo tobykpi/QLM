@@ -2744,13 +2744,13 @@
     </section>
 
     <section class="consult-body">
-      <form class="consult-form" action="https://flowform.to/submit" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_to" value="quickliftmovers917@gmail.com">
+      <form class="consult-form" action="https://formsubmit.co/quickliftmovers917@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" id="submission-subject" value="New Free Estimate Request - QuickLift Moving">
         <input type="hidden" name="_next" value="https://quickliftmoving.us/?submitted=true#estimate">
+        <input type="hidden" name="_template" value="table">
         <input type="hidden" name="submitted_at_eastern" id="submitted-at-eastern">
         <input type="hidden" name="photos_selected" id="photos-selected" value="None">
-        <input type="text" name="hp_email" tabindex="-1" autocomplete="off" style="display: none;">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display: none;">
         <div class="submission-success" id="submission-success" role="status" aria-live="polite">
           <span class="success-mark">✓</span>
           <span>
@@ -2786,12 +2786,12 @@
         <div class="field field-full">
           <label for="photos">Photos of Items to Move (Optional)</label>
           <div class="upload-zone" id="photo-upload" tabindex="0" role="button" aria-describedby="upload-status">
-            <input class="file-input" id="photos" type="file" name="photos[]" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
+            <input class="file-input" id="photos" type="file" name="attachment" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple>
             <div class="upload-icon">+</div>
             <div class="upload-title">Drag photos here or browse</div>
-            <p class="upload-copy">Upload a few pictures of the items you're moving to help with the estimate. Up to 4 images.</p>
+            <p class="upload-copy">Upload a few pictures of the items you're moving to help with the estimate. Up to 4 images, 10MB total.</p>
             <button class="upload-link" id="browse-photos" type="button">Choose Photos</button>
-            <p class="upload-status" id="upload-status">Accepted formats: JPG, PNG, WEBP, GIF, HEIC, HEIF</p>
+            <p class="upload-status" id="upload-status">Accepted formats: JPG, PNG, WEBP, GIF, HEIC, HEIF. 10MB total.</p>
             <div class="upload-list" id="upload-list"></div>
           </div>
         </div>
@@ -3187,7 +3187,7 @@
         uploadList.innerHTML = "";
 
         if (!photoInput.files || photoInput.files.length === 0) {
-          uploadStatus.textContent = "Accepted formats: JPG, PNG, WEBP, GIF, HEIC, HEIF";
+          uploadStatus.textContent = "Accepted formats: JPG, PNG, WEBP, GIF, HEIC, HEIF. 10MB total.";
           return;
         }
 
@@ -3204,6 +3204,26 @@
 
       const openFilePicker = () => {
         photoInput.click();
+      };
+
+      const validatePhotoFiles = () => {
+        if (!photoInput.files || photoInput.files.length === 0) {
+          return true;
+        }
+
+        if (photoInput.files.length > 4) {
+          alert("Please upload no more than 4 photos.");
+          return false;
+        }
+
+        const totalSize = Array.from(photoInput.files).reduce((sum, file) => sum + file.size, 0);
+
+        if (totalSize > 10 * 1024 * 1024) {
+          alert("Please keep uploaded photos under 10MB total.");
+          return false;
+        }
+
+        return true;
       };
 
       photoBrowseButton.addEventListener("click", (event) => {
@@ -3227,6 +3247,19 @@
       });
 
       photoInput.addEventListener("change", updatePhotoList);
+
+      if (photoInput.form) {
+        photoInput.form.addEventListener("submit", (event) => {
+          if (!validatePhotoFiles()) {
+            event.preventDefault();
+
+            if (submitRequest) {
+              submitRequest.classList.remove("is-submitting");
+              submitRequest.textContent = "Submit Request";
+            }
+          }
+        });
+      }
 
       ["dragenter", "dragover"].forEach((eventName) => {
         photoUpload.addEventListener(eventName, (event) => {
