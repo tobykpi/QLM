@@ -2021,7 +2021,7 @@
           <div class="about-card" id="about-card">
             <span class="eyebrow">About</span>
             <h2>Built on Trust, Reliability, and Respect</h2>
-            <p>Moving is more than transporting boxes - it's about trust. With years of hands-on experience, our team is built on professionalism, reliability, and respect for your home and belongings.</p>
+            <p>From local moves to long-distance relocations, moving is about trust. With years of hands-on experience, our team brings professionalism, reliability, and respect for your home and belongings every mile of the way.</p>
           </div>
         </div>
       </div>
@@ -2099,7 +2099,7 @@
       <div class="reviews-head">
         <div class="reviews-copy">
           <span class="eyebrow">Customer Reviews</span>
-          <h2 id="reviews-title">40 Five-Star Reviews From Real QuickLift Moving Customers</h2>
+          <h2 id="reviews-title">135+ Customer Reviews for QuickLift Moving</h2>
           <div class="review-pillars" aria-label="Highlighted strengths">
             <span>Work Quality</span>
             <span>Professionalism</span>
@@ -2114,7 +2114,7 @@
           <span class="score-label">Overall Rating</span>
           <div class="score-number">5.0</div>
           <div class="score-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="score-copy">Built from recent Thumbtack customer feedback, with 40 five-star reviews across moving, heavy lifting, junk removal, and furniture assembly jobs.</p>
+          <p class="score-copy">135+ customer reviews and counting. Explore customer feedback across moving, heavy lifting, junk removal, and furniture assembly jobs.</p>
           <a class="reviews-link" href="https://www.thumbtack.com/de/new-castle/moving-companies/quicklift-moving/service/572974153873571869" target="_blank" rel="noreferrer">View on Thumbtack</a>
         </div>
       </div>
@@ -2740,11 +2740,11 @@
     <section class="consult-header" id="estimate">
       <span class="eyebrow">Free Estimate</span>
       <h1>Request a Free Estimate</h1>
-      <p>Tell QuickLift Moving a little about your move and we'll follow up with a free quote and next steps.</p>
+      <p>Planning a local or long-distance move? Tell QuickLift Moving about your move and we'll follow up with a free quote and next steps.</p>
     </section>
 
     <section class="consult-body">
-      <form class="consult-form" action="https://formsubmit.co/quickliftmovers917@gmail.com" method="POST" enctype="multipart/form-data">
+      <form class="consult-form" action="https://formsubmit.co/estimates@quickliftmoving.us" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" id="submission-subject" value="New Free Estimate Request - QuickLift Moving">
         <input type="hidden" name="_next" value="https://quickliftmoving.us/?submitted=true#estimate">
         <input type="hidden" name="_template" value="table">
@@ -2759,28 +2759,33 @@
           </span>
         </div>
         <div class="field field-half">
-          <label for="name">Full Name</label>
-          <input id="name" type="text" name="name" placeholder="Full Name" required>
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" placeholder="Full Name" autocomplete="name" required>
         </div>
 
         <div class="field field-half">
-          <label for="email">Email Address</label>
-          <input id="email" type="email" name="email" placeholder="Email Address" required>
-        </div>
-
-        <div class="field field-half">
-          <label for="phone">Phone Number</label>
+          <label for="phone">Number</label>
           <input id="phone" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" inputmode="tel" required>
         </div>
 
-        <div class="field field-half">
-          <label for="organization">Organization</label>
-          <input id="organization" type="text" name="organization" placeholder="Organization (Optional)">
+        <div class="field field-full">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="Email Address" autocomplete="email" required>
         </div>
 
         <div class="field field-full">
-          <label for="message">Move Details</label>
-          <textarea id="message" name="message" placeholder="Briefly describe what you need moved, your locations, and anything else we should know" required></textarea>
+          <label for="message">Move Description</label>
+          <textarea id="message" name="message" placeholder="Describe what you need moved, your preferred move date, and anything else we should know" required></textarea>
+        </div>
+
+        <div class="field field-half">
+          <label for="starting-zip">Starting Zip Code</label>
+          <input id="starting-zip" type="text" name="starting_zip_code" placeholder="Starting ZIP Code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" title="Enter a 5-digit ZIP code or ZIP+4" required>
+        </div>
+
+        <div class="field field-half">
+          <label for="ending-zip">Ending Zip Code</label>
+          <input id="ending-zip" type="text" name="ending_zip_code" placeholder="Ending ZIP Code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" title="Enter a 5-digit ZIP code or ZIP+4" required>
         </div>
 
         <div class="field field-full">
@@ -2796,7 +2801,7 @@
           </div>
         </div>
 
-        <p class="form-note">Share your name, email, phone number, move details, and optional photos so QuickLift Moving can review everything and reach out with a free quote.</p>
+        <p class="form-note">Get a free quote for your local or long-distance move.</p>
 
         <button class="submit-button" id="submit-request" type="submit">Submit Request</button>
       </form>
