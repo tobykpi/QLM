@@ -478,6 +478,59 @@
     letter-spacing: 1.4px;
   }
 
+  #tt-review-widget-one {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 28px;
+    padding: 24px;
+    background: #fff;
+    color: #222;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
+
+  #tt-review-widget-one > img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  #tt-review-widget-one .tt-left img {
+    width: 48px;
+    height: 48px;
+    float: left;
+    margin-right: 16px;
+  }
+
+  #tt-review-widget-one .tt-name {
+    font-weight: 700;
+  }
+
+  #tt-review-widget-one .tt-stars {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin: 8px 0;
+  }
+
+  #tt-review-widget-one .tt-stars img {
+    width: 16px;
+    height: 16px;
+  }
+
+  #tt-review-widget-one p {
+    clear: both;
+    padding-top: 12px;
+    line-height: 1.6;
+  }
+
+  #tt-review-widget-one a {
+    color: #0969a6;
+  }
+
   .reviews-section {
     position: relative;
     isolation: isolate;
@@ -2096,643 +2149,32 @@
     </section>
 
     <section class="reviews-section" aria-labelledby="reviews-title">
-      <div class="reviews-head">
-        <div class="reviews-copy">
-          <span class="eyebrow">Customer Reviews</span>
-          <h2 id="reviews-title">135+ Customer Reviews for QuickLift Moving</h2>
-          <div class="review-pillars" aria-label="Highlighted strengths">
-            <span>Work Quality</span>
-            <span>Professionalism</span>
-            <span>Responsiveness</span>
-            <span>Careful Handling</span>
-            <span>Fair Pricing</span>
-            <span>Clear Communication</span>
-          </div>
-        </div>
-
-        <div class="reviews-scorecard">
-          <span class="score-label">Overall Rating</span>
-          <div class="score-number">5.0</div>
-          <div class="score-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="score-copy">135+ customer reviews and counting. Explore customer feedback across moving, heavy lifting, junk removal, and furniture assembly jobs.</p>
-        </div>
+      <div class="reviews-copy">
+        <span class="eyebrow">Customer Reviews</span>
+        <h2 id="reviews-title">What Our Customers Say</h2>
       </div>
-
-      <div class="reviews-deck-shell">
-        <div class="reviews-toolbar">
-          <div class="reviews-swipe-label">Swipe through the reviews</div>
-          <div class="reviews-deck-controls">
-            <button class="reviews-button" id="reviews-prev" type="button">Prev</button>
-            <div class="reviews-count" id="reviews-count">01 / 40</div>
-            <button class="reviews-button" id="reviews-next" type="button">Next</button>
+      <div class="widget" id="tt-review-widget-one">
+        <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/logos/thumbtack/wordmark.svg" alt="Thumbtack">
+        <div id="tt-dynamic">
+          <div class="tt-left">
+            <img src="https://cdn.thumbtackstatic.com/fe-assets-web/_assets/images/release/components/avatar/images/legacy-default-avatar-50x50.25cbe35c0002a2eef6cbc5f1c4f271545eafbb59.png" alt="Customer avatar">
           </div>
+          <div class="tt-right">
+            <div class="tt-name">Emily B.</div>
+            <div class="tt-stars" aria-label="5 out of 5 stars">
+              <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/pages/profile/standard-widgets/review-widget/orange_star.svg" alt="">
+              <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/pages/profile/standard-widgets/review-widget/orange_star.svg" alt="">
+              <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/pages/profile/standard-widgets/review-widget/orange_star.svg" alt="">
+              <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/pages/profile/standard-widgets/review-widget/orange_star.svg" alt="">
+              <img src="https://cdn.thumbtackstatic.com/fe-assets-web/media/pages/profile/standard-widgets/review-widget/orange_star.svg" alt="">
+              <span>139 reviews</span>
+            </div>
+            <p>Fast and friendly, I appreciate that Emmanuel lugged the junk away less than 24 hours from the time I reached out. I look forward to hiring him again in the future!</p>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.thumbtack.com/de/new-castle/moving-companies/quicklift-moving/service/572974153873571869">See all reviews</a>
+          </div>
+          <br>
         </div>
-
-        <div class="reviews-deck-progress" aria-hidden="true">
-          <span class="reviews-deck-progress-fill" id="reviews-progress-fill"></span>
-        </div>
-
-        <div class="reviews-grid" id="reviews-deck" aria-live="polite" aria-label="QuickLift Moving customer reviews">
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">S</span>
-              <div class="review-person-copy">
-                <h3>Stephanie K.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Quick response, great communication, and a friendly crew that moved everything with ease. Strong recommendation.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">Z</span>
-              <div class="review-person-copy">
-                <h3>Zhene G.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Polite, efficient, and careful with every belonging. The whole move felt seamless and much less daunting.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">R</span>
-              <div class="review-person-copy">
-                <h3>Raj K.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Great experience with Emanuel and the team. Everything was wrapped well, moved efficiently, and handled professionally.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">S</span>
-              <div class="review-person-copy">
-                <h3>Sol L.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">An outstanding experience transporting a patio set. Everything arrived in perfect condition and was handled with real care.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">J</span>
-              <div class="review-person-copy">
-                <h3>J.C.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Arrived on time with supplies, shrink wrapped what needed protection, and treated everything gently. Respectful, friendly, and easy to work with.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">C</span>
-              <div class="review-person-copy">
-                <h3>Chelsea M.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Very responsive and professional. The crew packed the POD incredibly well, wrapped what needed protection, and kept pricing straightforward.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">M</span>
-              <div class="review-person-copy">
-                <h3>Mery K.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">A smooth office furniture move from start to finish. The crew was on time, careful, and efficient without delays.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">J</span>
-              <div class="review-person-copy">
-                <h3>Jasmine M.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Helped move a heavy couch down four flights of stairs. Communication was strong, the crew was professional, and the job was done quickly.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">B</span>
-              <div class="review-person-copy">
-                <h3>Bryton B.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Super impressed with the quality, professionalism, and efficiency. Great communication and punctual service.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">H</span>
-              <div class="review-person-copy">
-                <h3>Hoda B.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Courteous, professional, and extremely responsive. They took great care with both the furniture and the home during a same-house move.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">A</span>
-              <div class="review-person-copy">
-                <h3>Alexander K.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Prompt, flexible, on time, and true to the quoted price. The team protected the furniture and stayed friendly and professional.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">H</span>
-              <div class="review-person-copy">
-                <h3>Hunter T.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Punctual, professional, and easy to work with while moving mattresses. Definitely recommended.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">S</span>
-              <div class="review-person-copy">
-                <h3>SCott B.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Handled an emergency move with timely updates, solid arrival estimates, and respect for the household.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">M</span>
-              <div class="review-person-copy">
-                <h3>Marlee R.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Moved rugs, a couch, and a bed with professionalism and an early arrival. Very helpful and easy to recommend.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">C</span>
-              <div class="review-person-copy">
-                <h3>Cynthia O.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Responsive from the start, showed up ready, and pushed through a difficult situation with professionalism, kindness, and strong communication.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">K</span>
-              <div class="review-person-copy">
-                <h3>Kalie H.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Great work that made the moving experience so much easier.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">D</span>
-              <div class="review-person-copy">
-                <h3>Dorian H.</h3>
-                <p>Junk Removal</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Professional, efficient, and focused while breaking down and removing a king-size bed. The job finished faster than expected.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">T</span>
-              <div class="review-person-copy">
-                <h3>Tree Y.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Professional, polite, and right on time. Packing was efficient and the service was easy to recommend.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">J</span>
-              <div class="review-person-copy">
-                <h3>Joe M.</h3>
-                <p>Furniture Assembly</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">An amazing job with consistent communication from the start through the end. Professional, polite, and punctual.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">D</span>
-              <div class="review-person-copy">
-                <h3>Dyncia E.</h3>
-                <p>Furniture Assembly</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Stepped in quickly after another contractor went quiet. Great customer service, flexibility, and pricing, plus enough trust to book another project right away.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">M</span>
-              <div class="review-person-copy">
-                <h3>Marlayne W.</h3>
-                <p>Furniture Assembly</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Responded within minutes, got the job done quickly and professionally, and offered a great price.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">A</span>
-              <div class="review-person-copy">
-                <h3>Alicia B.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Very friendly and professional with excellent communication. They arrived on time and completed the project quickly.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">D</span>
-              <div class="review-person-copy">
-                <h3>Destiny H.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Highly responsive from the first message and dependable even with sudden weather changes. A team worth partnering with again.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">M</span>
-              <div class="review-person-copy">
-                <h3>Matthew W.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">The turnaround from first contact to finished job was impressively fast, and every part of the experience stood out.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">M</span>
-              <div class="review-person-copy">
-                <h3>Mr O.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Showed up on time, stayed professional and courteous, and made the job easy to recommend.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">A</span>
-              <div class="review-person-copy">
-                <h3>Arif M.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">A great moving experience handled with care from start to finish. Highly recommended.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">J</span>
-              <div class="review-person-copy">
-                <h3>Jake W.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">One of the best crews out there. The delivery was handled carefully and the workmanship clearly stood out.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">H</span>
-              <div class="review-person-copy">
-                <h3>Hunter B.</h3>
-                <p>Moving Services</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Reliable, professional, and efficient. Everything was handled with care and the whole move felt stress-free.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">I</span>
-              <div class="review-person-copy">
-                <h3>Imani P.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Ten across the board. On time, fast, careful, professional, and genuinely kind.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">A</span>
-              <div class="review-person-copy">
-                <h3>Andre D.</h3>
-                <p>Moving Services</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Showed up on time, worked efficiently, and handled the furniture carefully. The move stayed transparent and stress-free.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">S</span>
-              <div class="review-person-copy">
-                <h3>Sean M.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Arrived early and worked hard to get the job done. Easy to recommend.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">T</span>
-              <div class="review-person-copy">
-                <h3>Thomas H.</h3>
-                <p>Junk Removal</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Very pleased with Emmanuel's professionalism and promptness.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">K</span>
-              <div class="review-person-copy">
-                <h3>Katherine S.</h3>
-                <p>Local Moving (Under 50 Miles)</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Super responsive and accommodating, while staying professional and courteous the whole way through.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">M</span>
-              <div class="review-person-copy">
-                <h3>Melane B.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Very courteous and professional. A team worth using again.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">K</span>
-              <div class="review-person-copy">
-                <h3>Keith S.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Quick response, great communication, and reasonable pricing. Easy recommendation for the future.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">N</span>
-              <div class="review-person-copy">
-                <h3>Naeem M.</h3>
-                <p>Furniture Assembly</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Great work with no complaints.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">D</span>
-              <div class="review-person-copy">
-                <h3>Decarl S.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Very professional, fast, and efficient from start to finish.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">T</span>
-              <div class="review-person-copy">
-                <h3>Teana H.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">They were great and made everything feel seamless.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">N</span>
-              <div class="review-person-copy">
-                <h3>Nabila J.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Great at the job and very kind and respectful throughout.</p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-person">
-              <span class="review-avatar">H</span>
-              <div class="review-person-copy">
-                <h3>Hannah R.</h3>
-                <p>Furniture Moving and Heavy Lifting</p>
-              </div>
-            </div>
-            <span class="review-source">Thumbtack</span>
-          </div>
-          <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">Five-star Thumbtack feedback shared for a furniture move involving boxes, mattresses, and multiple household items.</p>
-        </article>
-        </div>
+        <script src="https://www.thumbtack.com/profile/widgets/scripts/?service_pk=572974153873571869&amp;widget_id=review&amp;type=one"></script>
       </div>
     </section>
 
