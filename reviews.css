@@ -1,0 +1,23 @@
+.qlm-carousel { position: relative; z-index: 1; margin-top: 24px; }
+.qlm-review-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.qlm-review-controls[hidden], .qlm-review[hidden] { display: none; }
+.qlm-review-controls button { min-width: 44px; min-height: 44px; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: 12px; background: #202126; color: var(--text); font: inherit; font-size: .82rem; cursor: pointer; }
+.qlm-review-controls button:hover { border-color: var(--accent); color: var(--accent); }
+.qlm-review-controls button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+#qlm-play { margin-left: auto; }
+#qlm-count { color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; min-width: 66px; text-align: center; }
+.qlm-review-stage { touch-action: pan-y; }
+.qlm-review { border: 1px solid rgba(213,174,52,.28); border-radius: 22px; background: linear-gradient(145deg,#252323,#131519); padding: 30px; margin-bottom: 16px; box-shadow: 0 15px 40px #0003; }
+.qlm-review-heading { display: flex; align-items: center; gap: 14px; }
+.qlm-avatar { display: grid; place-items: center; width: 48px; height: 48px; flex: 0 0 48px; border-radius: 50%; background: #d5ae3420; color: var(--accent); font-weight: 800; font-size: 1.2rem; }
+.qlm-review h3 { font-size: 1.05rem; line-height: 1.5; }
+.qlm-review-source { color: var(--muted); font-size: .75rem; }
+.qlm-stars { color: var(--accent); font-size: 1.3rem; letter-spacing: 3px; margin: 20px 0 14px; }
+.qlm-quote { color: var(--text); font-size: .96rem; line-height: 1.85; white-space: pre-line; overflow-wrap: anywhere; }
+.qlm-full-review { margin-top: 18px; }
+.qlm-full-review summary { color: var(--accent); cursor: pointer; font-weight: 700; font-size: .85rem; padding: 8px 0; }
+.qlm-full-review .qlm-quote { margin-top: 12px; }
+.qlm-review:has(.qlm-full-review[open]) > .qlm-quote { display: none; }
+.qlm-review-note { font-size: .73rem; color: var(--muted); line-height: 1.7; }
+.qlm-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 480px) { .qlm-review { padding: 22px; } .qlm-review-controls { gap: 8px; } #qlm-play { font-size: .74rem; padding: 10px; } }
