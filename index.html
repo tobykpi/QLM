@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Estimate Request | QuickLift Moving</title>
+<title>Local &amp; Long-Distance Moving | QuickLift Moving</title>
+<meta name="description" content="Plan your local or long-distance move with QuickLift Moving. Explore moving information, prepare for moving day, and request a free estimate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -2044,10 +2045,50 @@
       padding: 24px 20px;
     }
   }
+  /* Client feedback: navigation, service information, and direct contact. */
+  html { scroll-padding-top: 24px; }
+  .site-nav { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; padding: 18px 24px; border-bottom: 1px solid var(--border); }
+  .site-nav a { color: var(--muted); font-size: .8rem; font-weight: 700; text-decoration: none; padding: 8px 0; }
+  .site-nav a:hover { color: var(--accent); }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+  .intro-copy { position: relative; z-index: 1; text-align: center; max-width: 580px; margin-top: 26px; }
+  .intro-copy h1 { font-size: clamp(1.8rem, 5vw, 2.65rem); line-height: 1.18; letter-spacing: -.04em; }
+  .intro-copy p, .info-section p, .info-section li { color: var(--muted); font-size: .93rem; line-height: 1.85; }
+  .intro-copy p { margin-top: 16px; }
+  .info-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 24px 0 12px; }
+  .info-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 13px 20px; border: 1px solid var(--border-strong); border-radius: 12px; color: var(--text); font-size: .85rem; font-weight: 700; text-decoration: none; }
+  .info-button-primary { background: var(--accent); border-color: var(--accent); color: #111; }
+  .info-button:hover { border-color: var(--accent); }
+  .info-section { position: relative; padding: 36px 38px; border-bottom: 1px solid var(--border); }
+  .info-section h2 { margin: 10px 0 16px; font-size: clamp(1.5rem, 4vw, 1.9rem); line-height: 1.3; letter-spacing: -.03em; }
+  .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+  .info-card { padding: 22px; border: 1px solid var(--border); border-radius: 18px; background: var(--panel-soft); }
+  .info-card h3 { font-size: 1rem; line-height: 1.5; margin-bottom: 10px; }
+  .move-steps { list-style: none; counter-reset: move; display: grid; gap: 20px; margin-top: 24px; }
+  .move-steps li { position: relative; padding-left: 50px; counter-increment: move; }
+  .move-steps li::before { content: counter(move, decimal-leading-zero); position: absolute; left: 0; top: 0; color: var(--accent); font-size: 1.15rem; font-weight: 800; }
+  .move-steps strong { display: block; color: var(--text); }
+  .planning-list { padding-left: 20px; margin-top: 16px; }
+  .planning-list li + li { margin-top: 10px; }
+  .faq-list details { border-top: 1px solid var(--border); padding: 18px 0; }
+  .faq-list summary { cursor: pointer; color: var(--text); font-weight: 700; font-size: .92rem; line-height: 1.6; }
+  .faq-list details p { margin-top: 12px; }
+  .info-section a:not(.info-button) { color: var(--accent); text-underline-offset: 4px; overflow-wrap: anywhere; }
+  .consult-header h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.2; margin-bottom: 16px; }
+  .contact-address { display: block; margin-top: 16px; font-weight: 700; }
+  @media (max-width: 640px) {
+    .info-section { padding: 30px 22px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .site-nav { gap: 4px 16px; padding: 14px 18px; }
+    .info-actions .info-button { flex: 1 1 190px; }
+  }
 </style>
 </head>
 <body>
-  <main class="consult-shell">
+  <main class="consult-shell" id="top">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#services">Services</a><a href="#moving-process">Your Move</a><a href="#service-area">Service Area</a><a href="#faq">FAQs</a><a href="#contact">Contact</a><a href="#estimate">Free Estimate</a>
+    </nav>
     <section class="brand-hero">
       <div class="logo-stage">
         <div class="logo-glow"></div>
@@ -2064,6 +2105,14 @@
         </div>
       </div>
       <p class="logo-caption">QuickLift Moving</p>
+      <div class="intro-copy">
+        <h1>Your next move starts with a clear plan.</h1>
+        <p>Local moves. Long-distance relocations. Tell us where you're headed and what needs moving, and let's work out the next steps.</p>
+        <div class="info-actions">
+          <a class="info-button info-button-primary" href="#estimate">Get a Free Estimate</a>
+          <a class="info-button" href="mailto:emmanuel@quickliftmoving.us">Email the Team</a>
+        </div>
+      </div>
     </section>
 
     <section class="about-section" aria-label="About QuickLift Moving">
@@ -2080,6 +2129,44 @@
       </div>
     </section>
 
+    <section class="info-section" id="services" aria-labelledby="services-title">
+      <span class="eyebrow">Moving Services</span>
+      <h2 id="services-title">Tell us what your move needs.</h2>
+      <p>Every move has different logistics. Share the size of your move, your locations, and any special handling needs so the estimate reflects your situation.</p>
+      <div class="info-grid">
+        <article class="info-card"><h3>Local Moving</h3><p>Moving nearby? Include both ZIP codes, the number of rooms, and any stairs, elevators, or parking restrictions at each location.</p></article>
+        <article class="info-card"><h3>Long-Distance Moving</h3><p>Planning a relocation farther away? Share your pickup and delivery locations, preferred dates, and any flexibility so we can discuss your route and scheduling.</p></article>
+      </div>
+      <div class="info-actions"><a class="info-button" href="#estimate">Discuss Your Move</a></div>
+    </section>
+
+    <section class="info-section" id="moving-process" aria-labelledby="process-title">
+      <span class="eyebrow">Planning Your Move</span>
+      <h2 id="process-title">From first details to moving day.</h2>
+      <ol class="move-steps">
+        <li><strong>Share the details.</strong>Send your locations, preferred date, and an overview of your belongings. Photos help us understand bulky or unusual items.</li>
+        <li><strong>Review your estimate.</strong>We'll follow up with a free quote and next steps. Discuss access, special handling, and the help you need before confirming arrangements.</li>
+        <li><strong>Prepare for moving day.</strong>Confirm the agreed services, arrival arrangements, and building requirements with the team. Keep essentials and important documents with you.</li>
+      </ol>
+    </section>
+
+    <section class="info-section" id="move-care" aria-labelledby="care-title">
+      <span class="eyebrow">Care &amp; Preparation</span>
+      <h2 id="care-title">Plan ahead for the items that matter.</h2>
+      <p>A useful estimate starts with the details that are easy to overlook. Let us know about fragile items, tight spaces, and building rules before moving day.</p>
+      <ul class="planning-list">
+        <li><strong>Furniture and fragile items:</strong> Send photos and dimensions. Discuss wrapping, padding, packing materials, and any disassembly needed for your move.</li>
+        <li><strong>Your home and building:</strong> Flag narrow doorways, stairs, elevator reservations, and floor or doorway protection requirements.</li>
+        <li><strong>Larger moves:</strong> Include a room-by-room inventory and any heavy or oversized pieces so the team can assess the resources and scheduling needed.</li>
+      </ul>
+    </section>
+
+    <section class="info-section" id="service-area" aria-labelledby="area-title">
+      <span class="eyebrow">Service Area</span>
+      <h2 id="area-title">Let's check your route.</h2>
+      <p>Request a local or long-distance move by sharing your pickup and delivery ZIP codes. Contact the team to confirm availability for your locations and preferred date.</p>
+      <div class="info-actions"><a class="info-button" href="#estimate">Check My Move</a></div>
+    </section>
     <section class="work-showcase" aria-label="Recent QuickLift Moving work">
       <div class="showcase-frame">
         <div class="showcase-slides" id="showcase-slides">
@@ -2178,9 +2265,29 @@
       </div>
     </section>
 
+    <section class="info-section" id="faq" aria-labelledby="faq-title">
+      <span class="eyebrow">Common Questions</span>
+      <h2 id="faq-title">Before you book.</h2>
+      <div class="faq-list">
+        <details><summary>What should I include in my estimate request?</summary><p>Include your preferred moving date, pickup and delivery ZIP codes, what needs moving, and any stairs or access restrictions. You can attach up to four photos, with a combined size of 10MB.</p></details>
+        <details><summary>Does submitting a request book my move?</summary><p>The form requests a free estimate. The team will follow up with a quote and next steps; confirm scheduling and booking arrangements directly with QuickLift Moving.</p></details>
+        <details><summary>Can I ask about packing and furniture protection?</summary><p>Yes. Describe fragile pieces, furniture that may need disassembly, and any packing help you need. Confirm which materials and protection methods are included in your estimate before booking.</p></details>
+        <details><summary>How do I check licensing and insurance details?</summary><p>Contact the team before booking to request licensing and insurance documentation relevant to your move. If your building requires a certificate of insurance, share its requirements in advance.</p></details>
+        <details><summary>What if I have a large move or oversized items?</summary><p>Send an inventory, photos, approximate dimensions, and details of access at both locations. Ask the team to confirm capacity, equipment needs, and availability for your job.</p></details>
+        <details><summary>How can I make a payment?</summary><p>Use the <a href="#payment">QuickLift Moving payment link</a> to view the available payment options. Confirm the amount and payment timing with the team first.</p></details>
+      </div>
+    </section>
+
+    <section class="info-section" id="contact" aria-labelledby="contact-title">
+      <span class="eyebrow">Contact QuickLift Moving</span>
+      <h2 id="contact-title">Have a question before requesting a quote?</h2>
+      <p>Email the team about your route, timing, special items, or documentation needs. Include your moving date and locations to help us understand your request.</p>
+      <a class="contact-address" href="mailto:emmanuel@quickliftmoving.us">emmanuel@quickliftmoving.us</a>
+      <div class="info-actions"><a class="info-button info-button-primary" href="#estimate">Request a Free Estimate</a></div>
+    </section>
     <section class="consult-header" id="estimate">
       <span class="eyebrow">Free Estimate</span>
-      <h1>Request a Free Estimate</h1>
+      <h2>Request a Free Estimate</h2>
       <p>Planning a local or long-distance move? Tell QuickLift Moving about your move and we'll follow up with a free quote and next steps.</p>
     </section>
 
@@ -2252,7 +2359,7 @@
       <div class="payment-card">
         <span class="eyebrow">Payment Options</span>
         <h2>Need to Make a Payment?</h2>
-        <p>Customers can use the DOT card payment link below to choose from your client's available payment methods in one place.</p>
+        <p>Use the QuickLift Moving DOT card link below to view available payment methods.</p>
         <div class="payment-actions">
           <div class="payment-link-card">
             <div class="payment-link-head">
@@ -2266,7 +2373,7 @@
       </div>
     </section>
 
-    <p class="footer-copy">QuickLift Moving Free Estimate Request</p>
+    <p class="footer-copy">QuickLift Moving &middot; Local &amp; Long-Distance Moves</p>
   </main>
   <script>
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
